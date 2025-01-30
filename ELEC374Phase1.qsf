@@ -38,7 +38,7 @@
 
 set_global_assignment -name FAMILY "Cyclone V"
 set_global_assignment -name DEVICE 5CEBA4F23C7
-set_global_assignment -name TOP_LEVEL_ENTITY testbench
+set_global_assignment -name TOP_LEVEL_ENTITY and_32
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 18.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "12:12:01  JANUARY 20, 2025"
 set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Lite Edition"
@@ -58,7 +58,6 @@ set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id ALU_tb
 set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "500 ns" -section_id ALU_tb
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME ALU_tb -section_id ALU_tb
 set_global_assignment -name VERILOG_FILE registerclass.v
-set_global_assignment -name VERILOG_FILE DataPath.v
 set_global_assignment -name VERILOG_FILE Bus.v
 set_global_assignment -name VERILOG_FILE BoothMul.v
 set_global_assignment -name VERILOG_FILE testbench.v
@@ -66,20 +65,22 @@ set_global_assignment -name VERILOG_FILE adder.v
 set_global_assignment -name EDA_TEST_BENCH_NAME testbench -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id testbench
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME testbench -section_id testbench
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name EDA_TEST_BENCH_FILE ALU_tb.v -section_id ALU_tb
 set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "200 ns" -section_id testbench
 set_global_assignment -name EDA_TEST_BENCH_FILE testbench.v -section_id testbench
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
-set_global_assignment -name VERILOG_FILE and.v
-set_global_assignment -name VERILOG_FILE or.v
 set_global_assignment -name VERILOG_FILE subtractor.v
-set_global_assignment -name VERILOG_FILE shr.v
-set_global_assignment -name VERILOG_FILE shra.v
-set_global_assignment -name VERILOG_FILE shl.v
-set_global_assignment -name VERILOG_FILE ror.v
-set_global_assignment -name VERILOG_FILE rol.v
-set_global_assignment -name VERILOG_FILE neg.v
-set_global_assignment -name VERILOG_FILE not.v
+set_global_assignment -name VERILOG_FILE and_32.v
+set_global_assignment -name VERILOG_FILE and_32tb.v
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name VERILOG_FILE and32.v
+set_global_assignment -name VERILOG_FILE neg32.v
+set_global_assignment -name VERILOG_FILE not32.v
+set_global_assignment -name VERILOG_FILE or32.v
+set_global_assignment -name VERILOG_FILE rol32.v
+set_global_assignment -name VERILOG_FILE ror32.v
+set_global_assignment -name VERILOG_FILE shl32.v
+set_global_assignment -name VERILOG_FILE shr32.v
+set_global_assignment -name VERILOG_FILE shra32.v
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
