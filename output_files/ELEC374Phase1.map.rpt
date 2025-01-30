@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ELEC374Phase1
-Thu Jan 30 11:18:09 2025
+Thu Jan 30 18:38:44 2025
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -13,10 +13,13 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Post-Synthesis Netlist Statistics for Top Partition
- 10. Elapsed Time Per Partition
- 11. Analysis & Synthesis Messages
+  8. User-Specified and Inferred Latches
+  9. Logic Cells Representing Combinational Loops
+ 10. General Register Statistics
+ 11. Port Connectivity Checks: "shl32:shift"
+ 12. Post-Synthesis Netlist Statistics for Top Partition
+ 13. Elapsed Time Per Partition
+ 14. Analysis & Synthesis Messages
 
 
 
@@ -42,10 +45,10 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu Jan 30 11:18:09 2025       ;
+; Analysis & Synthesis Status     ; Successful - Thu Jan 30 18:38:44 2025       ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                   ; ELEC374Phase1                               ;
-; Top-level Entity Name           ; and_32                                      ;
+; Top-level Entity Name           ; mul                                         ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
 ; Total registers                 ; 0                                           ;
@@ -68,7 +71,7 @@ refer to the applicable agreement for further details.
 ; Option                                                                          ; Setting            ; Default Value      ;
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                                          ; 5CEBA4F23C7        ;                    ;
-; Top-level entity name                                                           ; and_32             ; ELEC374Phase1      ;
+; Top-level entity name                                                           ; mul                ; ELEC374Phase1      ;
 ; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
 ; Use smart compilation                                                           ; Off                ; Off                ;
 ; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
@@ -165,40 +168,42 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                    ;
-+----------------------------------+-----------------+------------------------+---------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                      ; Library ;
-+----------------------------------+-----------------+------------------------+---------------------------------------------------+---------+
-; and_32.v                         ; yes             ; User Verilog HDL File  ; C:/Users/jpbru/Documents/GitHub/ELEC_374/and_32.v ;         ;
-+----------------------------------+-----------------+------------------------+---------------------------------------------------+---------+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                   ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                     ; Library ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------+---------+
+; shl32.v                          ; yes             ; User Verilog HDL File  ; C:/Users/jpbru/Documents/GitHub/ELEC_374/shl32.v ;         ;
+; add.v                            ; yes             ; User Verilog HDL File  ; C:/Users/jpbru/Documents/GitHub/ELEC_374/add.v   ;         ;
+; mul.v                            ; yes             ; User Verilog HDL File  ; C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v   ;         ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------+---------+
 
 
-+--------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary            ;
-+---------------------------------------------+----------+
-; Resource                                    ; Usage    ;
-+---------------------------------------------+----------+
-; Estimate of Logic utilization (ALMs needed) ; 16       ;
-;                                             ;          ;
-; Combinational ALUT usage for logic          ; 32       ;
-;     -- 7 input functions                    ; 0        ;
-;     -- 6 input functions                    ; 0        ;
-;     -- 5 input functions                    ; 0        ;
-;     -- 4 input functions                    ; 0        ;
-;     -- <=3 input functions                  ; 32       ;
-;                                             ;          ;
-; Dedicated logic registers                   ; 0        ;
-;                                             ;          ;
-; I/O pins                                    ; 96       ;
-;                                             ;          ;
-; Total DSP Blocks                            ; 0        ;
-;                                             ;          ;
-; Maximum fan-out node                        ; result~0 ;
-; Maximum fan-out                             ; 1        ;
-; Total fan-out                               ; 192      ;
-; Average fan-out                             ; 0.86     ;
-+---------------------------------------------+----------+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimate of Logic utilization (ALMs needed) ; 67        ;
+;                                             ;           ;
+; Combinational ALUT usage for logic          ; 104       ;
+;     -- 7 input functions                    ; 0         ;
+;     -- 6 input functions                    ; 29        ;
+;     -- 5 input functions                    ; 12        ;
+;     -- 4 input functions                    ; 14        ;
+;     -- <=3 input functions                  ; 49        ;
+;                                             ;           ;
+; Dedicated logic registers                   ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 96        ;
+;                                             ;           ;
+; Total DSP Blocks                            ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; result~38 ;
+; Maximum fan-out                             ; 64        ;
+; Total fan-out                               ; 549       ;
+; Average fan-out                             ; 1.85      ;
++---------------------------------------------+-----------+
 
 
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -206,9 +211,94 @@ refer to the applicable agreement for further details.
 +----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
-; |and_32                    ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 96   ; 0            ; |and_32             ; and_32      ; work         ;
+; |mul                       ; 104 (71)            ; 0 (0)                     ; 0                 ; 0          ; 96   ; 0            ; |mul                ; mul         ; work         ;
+;    |add:add1|              ; 33 (33)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |mul|add:add1       ; add         ; work         ;
 +----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++----------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                ;
++-----------------------------------------------------+---------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal ; Free of Timing Hazards ;
++-----------------------------------------------------+---------------------+------------------------+
+; temp[0]                                             ; result              ; yes                    ;
+; temp[1]                                             ; result              ; yes                    ;
+; temp[2]                                             ; result              ; yes                    ;
+; temp[3]                                             ; result              ; yes                    ;
+; temp[4]                                             ; result              ; yes                    ;
+; temp[5]                                             ; result              ; yes                    ;
+; temp[6]                                             ; result              ; yes                    ;
+; temp[7]                                             ; result              ; yes                    ;
+; temp[8]                                             ; result              ; yes                    ;
+; temp[9]                                             ; result              ; yes                    ;
+; temp[10]                                            ; result              ; yes                    ;
+; temp[11]                                            ; result              ; yes                    ;
+; temp[12]                                            ; result              ; yes                    ;
+; temp[13]                                            ; result              ; yes                    ;
+; temp[14]                                            ; result              ; yes                    ;
+; temp[15]                                            ; result              ; yes                    ;
+; temp[16]                                            ; result              ; yes                    ;
+; temp[17]                                            ; result              ; yes                    ;
+; temp[18]                                            ; result              ; yes                    ;
+; temp[19]                                            ; result              ; yes                    ;
+; temp[20]                                            ; result              ; yes                    ;
+; temp[21]                                            ; result              ; yes                    ;
+; temp[22]                                            ; result              ; yes                    ;
+; temp[23]                                            ; result              ; yes                    ;
+; temp[24]                                            ; result              ; yes                    ;
+; temp[25]                                            ; result              ; yes                    ;
+; temp[26]                                            ; result              ; yes                    ;
+; temp[27]                                            ; result              ; yes                    ;
+; temp[28]                                            ; result              ; yes                    ;
+; temp[29]                                            ; result              ; yes                    ;
+; temp[30]                                            ; result              ; yes                    ;
+; temp[31]                                            ; result              ; yes                    ;
+; Number of user-specified and inferred latches = 32  ;                     ;                        ;
++-----------------------------------------------------+---------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++-------------------------------------------------------------+
+; Logic Cells Representing Combinational Loops                ;
++--------------------------------------------------------+----+
+; Logic Cell Name                                        ;    ;
++--------------------------------------------------------+----+
+; result~0                                               ;    ;
+; result~1                                               ;    ;
+; result~2                                               ;    ;
+; result~3                                               ;    ;
+; result~4                                               ;    ;
+; result~5                                               ;    ;
+; result~6                                               ;    ;
+; result~7                                               ;    ;
+; result~8                                               ;    ;
+; result~9                                               ;    ;
+; result~10                                              ;    ;
+; result~11                                              ;    ;
+; result~12                                              ;    ;
+; result~13                                              ;    ;
+; result~14                                              ;    ;
+; result~15                                              ;    ;
+; result~16                                              ;    ;
+; result~17                                              ;    ;
+; result~18                                              ;    ;
+; result~19                                              ;    ;
+; result~20                                              ;    ;
+; result~21                                              ;    ;
+; result~22                                              ;    ;
+; result~23                                              ;    ;
+; result~24                                              ;    ;
+; result~25                                              ;    ;
+; result~26                                              ;    ;
+; result~27                                              ;    ;
+; result~28                                              ;    ;
+; result~29                                              ;    ;
+; result~30                                              ;    ;
+; result~31                                              ;    ;
+; Number of logic cells representing combinational loops ; 32 ;
++--------------------------------------------------------+----+
+Note: All cells listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
 
 +------------------------------------------------------+
@@ -226,18 +316,32 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 
 
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "shl32:shift"                                                                                                                                                                                 ;
++-----------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port            ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-----------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; shift_amt       ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (5 bits) it drives.  The 27 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; shift_amt[4..0] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++-----------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
 +-----------------------------------------------------+
 ; Post-Synthesis Netlist Statistics for Top Partition ;
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_lcell_comb     ; 32                          ;
-;     normal            ; 32                          ;
-;         2 data inputs ; 32                          ;
+; arriav_lcell_comb     ; 104                         ;
+;     normal            ; 104                         ;
+;         2 data inputs ; 16                          ;
+;         3 data inputs ; 33                          ;
+;         4 data inputs ; 14                          ;
+;         5 data inputs ; 12                          ;
+;         6 data inputs ; 29                          ;
 ; boundary_port         ; 96                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 1.00                        ;
-; Average LUT depth     ; 1.00                        ;
+; Max LUT depth         ; 18.00                       ;
+; Average LUT depth     ; 9.72                        ;
 +-----------------------+-----------------------------+
 
 
@@ -256,7 +360,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Thu Jan 30 11:17:54 2025
+    Info: Processing started: Thu Jan 30 18:38:35 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ELEC374Phase1 -c ELEC374Phase1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
@@ -267,12 +371,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file bus.v
 Info (12021): Found 0 design units, including 0 entities, in source file boothmul.v
 Info (12021): Found 1 design units, including 1 entities, in source file testbench.v
     Info (12023): Found entity 1: testbench File: C:/Users/jpbru/Documents/GitHub/ELEC_374/testbench.v Line: 3
-Info (12021): Found 1 design units, including 1 entities, in source file adder.v
-    Info (12023): Found entity 1: adder File: C:/Users/jpbru/Documents/GitHub/ELEC_374/adder.v Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file subtractor.v
     Info (12023): Found entity 1: subtractor File: C:/Users/jpbru/Documents/GitHub/ELEC_374/subtractor.v Line: 2
-Info (12021): Found 1 design units, including 1 entities, in source file and_32.v
-    Info (12023): Found entity 1: and_32 File: C:/Users/jpbru/Documents/GitHub/ELEC_374/and_32.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file and_32tb.v
     Info (12023): Found entity 1: and_32tb File: C:/Users/jpbru/Documents/GitHub/ELEC_374/and_32tb.v Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file and32.v
@@ -293,18 +393,72 @@ Info (12021): Found 1 design units, including 1 entities, in source file shr32.v
     Info (12023): Found entity 1: shr32 File: C:/Users/jpbru/Documents/GitHub/ELEC_374/shr32.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file shra32.v
     Info (12023): Found entity 1: shra32 File: C:/Users/jpbru/Documents/GitHub/ELEC_374/shra32.v Line: 1
-Info (12127): Elaborating entity "and_32" for the top level hierarchy
+Info (12021): Found 1 design units, including 1 entities, in source file not_32tb.v
+    Info (12023): Found entity 1: not_32tb File: C:/Users/jpbru/Documents/GitHub/ELEC_374/not_32tb.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file or_32tb.v
+    Info (12023): Found entity 1: or_32tb File: C:/Users/jpbru/Documents/GitHub/ELEC_374/or_32tb.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file shl_32tb.v
+    Info (12023): Found entity 1: shl_32tb File: C:/Users/jpbru/Documents/GitHub/ELEC_374/shl_32tb.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file adder_tb.v
+    Info (12023): Found entity 1: adder_tb File: C:/Users/jpbru/Documents/GitHub/ELEC_374/adder_tb.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file sub_tb.v
+    Info (12023): Found entity 1: sub_tb File: C:/Users/jpbru/Documents/GitHub/ELEC_374/sub_tb.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file sub.v
+    Info (12023): Found entity 1: sub File: C:/Users/jpbru/Documents/GitHub/ELEC_374/sub.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file add.v
+    Info (12023): Found entity 1: add File: C:/Users/jpbru/Documents/GitHub/ELEC_374/add.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file mul.v
+    Info (12023): Found entity 1: mul File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file mul_tb.v
+    Info (12023): Found entity 1: mul_tb File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul_tb.v Line: 2
+Info (12127): Elaborating entity "mul" for the top level hierarchy
+Warning (10240): Verilog HDL Always Construct warning at mul.v(17): inferring latch(es) for variable "temp", which holds its previous value in one or more paths through the always construct File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 17
+Info (10041): Inferred latch for "temp[0]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[1]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[2]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[3]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[4]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[5]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[6]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[7]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[8]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[9]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[10]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[11]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[12]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[13]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[14]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[15]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[16]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[17]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[18]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[19]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[20]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[21]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[22]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[23]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[24]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[25]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[26]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[27]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[28]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[29]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[30]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (10041): Inferred latch for "temp[31]" at mul.v(19) File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 19
+Info (12128): Elaborating entity "shl32" for hierarchy "shl32:shift" File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 11
+Info (12128): Elaborating entity "add" for hierarchy "add:add1" File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v Line: 14
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 128 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 200 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 64 input pins
     Info (21059): Implemented 32 output pins
-    Info (21061): Implemented 32 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4836 megabytes
-    Info: Processing ended: Thu Jan 30 11:18:09 2025
-    Info: Elapsed time: 00:00:15
-    Info: Total CPU time (on all processors): 00:00:12
+    Info (21061): Implemented 104 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 3 warnings
+    Info: Peak virtual memory: 4840 megabytes
+    Info: Processing ended: Thu Jan 30 18:38:44 2025
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:08
 
 

@@ -1,10 +1,10 @@
 // Ripple-Carry Subtractor using 2's complement
-module subtractor(A, B, Result);
+module subtractor(A, B, result);
 
   input [31:0] A, B;
-  output [31:0] Result;
+  output [31:0] result;
 
-  reg [31:0] Result;
+  reg [31:0] result;
   reg [32:0] LocalCarry;  // 33 bits to handle final carry-out
 
   integer i;
@@ -17,7 +17,7 @@ module subtractor(A, B, Result);
     for(i = 0; i < 32; i = i + 1)
     begin
       // Subtraction = A + (~B) + 1
-      Result[i]       = A[i] ^ (~B[i]) ^ LocalCarry[i];
+      result[i]       = A[i] ^ (~B[i]) ^ LocalCarry[i];
       LocalCarry[i+1] = (A[i] & ~B[i]) | (A[i] & LocalCarry[i]) | ((~B[i]) & LocalCarry[i]);
     end
   end
