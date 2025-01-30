@@ -1,0 +1,6 @@
+`timescale 1ns/10ps
+
+module testbench();
+reg clock, clear;
+
+DataPath dp(clock, clear
