@@ -5,13 +5,11 @@ if {[file exists rtl_work]} {
 vlib rtl_work
 vmap work rtl_work
 
-vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/shl32.v}
-vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/add.v}
-vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v}
+vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul.v}
 
-vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/mul_tb.v}
+vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul_tb.v}
 
-vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  mul_tb
+vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  booth_pair_mul_tb
 
 add wave *
 view structure

@@ -8,90 +8,46 @@ z2
 !i10f 100
 cModel Technology
 Z0 dC:/Users/jpbru/Documents/GitHub/ELEC_374/simulation/modelsim
-vadd
-Z1 !s110 1738280338
+vbooth_pair_mul
+Z1 !s110 1738865755
 !i10b 1
-!s100 j<VJQ6ofbbNVUz`GKc5I:1
-IfWm>Bc>BG;8mnWjFK?3ET3
+!s100 gOjEFkTQSIWFRScn>Y0Kl3
+I48TNHa=HjY[MY;^[^zO3[3
 Z2 VDg1SIo80bB@j0V0VzS_@n1
 R0
-w1738279540
-8C:/Users/jpbru/Documents/GitHub/ELEC_374/add.v
-FC:/Users/jpbru/Documents/GitHub/ELEC_374/add.v
+w1738865717
+8C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul.v
+FC:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul.v
 L0 2
 Z3 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z4 !s108 1738280338.000000
-!s107 C:/Users/jpbru/Documents/GitHub/ELEC_374/add.v|
-!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374|C:/Users/jpbru/Documents/GitHub/ELEC_374/add.v|
+Z4 !s108 1738865755.000000
+!s107 C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374|C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul.v|
 !i113 1
 Z5 o-vlog01compat -work work
 Z6 !s92 -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374
 Z7 tCvgOpt 0
-vmul
+vbooth_pair_mul_tb
 R1
 !i10b 1
-!s100 BjU@o0V=Ih06_jATon8720
-I:4ObH77z0OKeH=h?TX^6S2
+!s100 lBDhB4n6OKOQb:09;8TYT3
+Ih=KUC>b:1IG0?QiLag6F@3
 R2
 R0
-w1738280313
-8C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v
-FC:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v
-L0 1
-R3
-r1
-!s85 0
-31
-R4
-!s107 C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v|
-!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374|C:/Users/jpbru/Documents/GitHub/ELEC_374/mul.v|
-!i113 1
-R5
-R6
-R7
-vmul_tb
-R1
-!i10b 1
-!s100 gkc?HGgoA5<f=6Jf@i[Im1
-IoISNeS8h?H:L>7D5]`nR=1
-R2
-R0
-w1738276848
-8C:/Users/jpbru/Documents/GitHub/ELEC_374/mul_tb.v
-FC:/Users/jpbru/Documents/GitHub/ELEC_374/mul_tb.v
+w1738862600
+8C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul_tb.v
+FC:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul_tb.v
 L0 2
 R3
 r1
 !s85 0
 31
 R4
-!s107 C:/Users/jpbru/Documents/GitHub/ELEC_374/mul_tb.v|
-!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374|C:/Users/jpbru/Documents/GitHub/ELEC_374/mul_tb.v|
-!i113 1
-R5
-R6
-R7
-vshl32
-R1
-!i10b 1
-!s100 =eIbT>GQlFQV:?am;hC>e1
-I_O66ZhmJUUT4ZG]Hb505R2
-R2
-R0
-w1738253587
-8C:/Users/jpbru/Documents/GitHub/ELEC_374/shl32.v
-FC:/Users/jpbru/Documents/GitHub/ELEC_374/shl32.v
-L0 1
-R3
-r1
-!s85 0
-31
-R4
-!s107 C:/Users/jpbru/Documents/GitHub/ELEC_374/shl32.v|
-!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374|C:/Users/jpbru/Documents/GitHub/ELEC_374/shl32.v|
+!s107 C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul_tb.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374|C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul_tb.v|
 !i113 1
 R5
 R6
