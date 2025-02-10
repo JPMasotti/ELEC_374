@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ELEC374Phase1
-Thu Feb 06 13:15:40 2025
+Mon Feb 10 13:55:14 2025
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -14,10 +14,9 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
-  9. Multiplexer Restructuring Statistics (Restructuring Performed)
- 10. Post-Synthesis Netlist Statistics for Top Partition
- 11. Elapsed Time Per Partition
- 12. Analysis & Synthesis Messages
+  9. Post-Synthesis Netlist Statistics for Top Partition
+ 10. Elapsed Time Per Partition
+ 11. Analysis & Synthesis Messages
 
 
 
@@ -43,10 +42,10 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu Feb 06 13:15:40 2025       ;
+; Analysis & Synthesis Status     ; Successful - Mon Feb 10 13:55:14 2025       ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                   ; ELEC374Phase1                               ;
-; Top-level Entity Name           ; booth_pair_mul                              ;
+; Top-level Entity Name           ; div                                         ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
 ; Total registers                 ; 0                                           ;
@@ -69,7 +68,7 @@ refer to the applicable agreement for further details.
 ; Option                                                                          ; Setting            ; Default Value      ;
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                                          ; 5CEBA4F23C7        ;                    ;
-; Top-level entity name                                                           ; booth_pair_mul     ; ELEC374Phase1      ;
+; Top-level entity name                                                           ; div                ; ELEC374Phase1      ;
 ; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
 ; Use smart compilation                                                           ; Off                ; Off                ;
 ; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
@@ -159,7 +158,7 @@ refer to the applicable agreement for further details.
 ; Maximum allowed            ; 12          ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 7           ;
+; Maximum used               ; 5           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
@@ -167,54 +166,52 @@ refer to the applicable agreement for further details.
 ;     Processor 3            ;   0.0%      ;
 ;     Processor 4            ;   0.0%      ;
 ;     Processor 5            ;   0.0%      ;
-;     Processor 6            ;   0.0%      ;
-;     Processor 7            ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                            ;
-+----------------------------------+-----------------+------------------------+-----------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                              ; Library ;
-+----------------------------------+-----------------+------------------------+-----------------------------------------------------------+---------+
-; booth_pair_mul.v                 ; yes             ; User Verilog HDL File  ; C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul.v ;         ;
-+----------------------------------+-----------------+------------------------+-----------------------------------------------------------+---------+
++----------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                 ;
++----------------------------------+-----------------+------------------------+------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                   ; Library ;
++----------------------------------+-----------------+------------------------+------------------------------------------------+---------+
+; div.v                            ; yes             ; User Verilog HDL File  ; C:/Users/jpbru/Documents/GitHub/ELEC_374/div.v ;         ;
++----------------------------------+-----------------+------------------------+------------------------------------------------+---------+
 
 
-+--------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary            ;
-+---------------------------------------------+----------+
-; Resource                                    ; Usage    ;
-+---------------------------------------------+----------+
-; Estimate of Logic utilization (ALMs needed) ; 1861     ;
-;                                             ;          ;
-; Combinational ALUT usage for logic          ; 3224     ;
-;     -- 7 input functions                    ; 0        ;
-;     -- 6 input functions                    ; 498      ;
-;     -- 5 input functions                    ; 1864     ;
-;     -- 4 input functions                    ; 93       ;
-;     -- <=3 input functions                  ; 769      ;
-;                                             ;          ;
-; Dedicated logic registers                   ; 0        ;
-;                                             ;          ;
-; I/O pins                                    ; 128      ;
-;                                             ;          ;
-; Total DSP Blocks                            ; 0        ;
-;                                             ;          ;
-; Maximum fan-out node                        ; Mux502~0 ;
-; Maximum fan-out                             ; 138      ;
-; Total fan-out                               ; 16751    ;
-; Average fan-out                             ; 4.81     ;
-+---------------------------------------------+----------+
++-------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary           ;
++---------------------------------------------+---------+
+; Resource                                    ; Usage   ;
++---------------------------------------------+---------+
+; Estimate of Logic utilization (ALMs needed) ; 2666    ;
+;                                             ;         ;
+; Combinational ALUT usage for logic          ; 3979    ;
+;     -- 7 input functions                    ; 0       ;
+;     -- 6 input functions                    ; 1353    ;
+;     -- 5 input functions                    ; 1658    ;
+;     -- 4 input functions                    ; 535     ;
+;     -- <=3 input functions                  ; 433     ;
+;                                             ;         ;
+; Dedicated logic registers                   ; 0       ;
+;                                             ;         ;
+; I/O pins                                    ; 128     ;
+;                                             ;         ;
+; Total DSP Blocks                            ; 0       ;
+;                                             ;         ;
+; Maximum fan-out node                        ; M[31]~0 ;
+; Maximum fan-out                             ; 1059    ;
+; Total fan-out                               ; 20690   ;
+; Average fan-out                             ; 4.89    ;
++---------------------------------------------+---------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                       ;
-+----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+----------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name    ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+----------------+--------------+
-; |booth_pair_mul            ; 3224 (3224)         ; 0 (0)                     ; 0                 ; 0          ; 128  ; 0            ; |booth_pair_mul     ; booth_pair_mul ; work         ;
-+----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+----------------+--------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                    ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+; |div                       ; 3979 (3979)         ; 0 (0)                     ; 0                 ; 0          ; 128  ; 0            ; |div                ; div         ; work         ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -233,60 +230,28 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 4:1                ; 31 bits   ; 62 LEs        ; 62 LEs               ; 0 LEs                  ; No         ; |booth_pair_mul|Mux49      ;
-; 8:1                ; 31 bits   ; 155 LEs       ; 93 LEs               ; 62 LEs                 ; No         ; |booth_pair_mul|Mux124     ;
-; 8:1                ; 31 bits   ; 155 LEs       ; 93 LEs               ; 62 LEs                 ; No         ; |booth_pair_mul|Mux184     ;
-; 8:1                ; 31 bits   ; 155 LEs       ; 93 LEs               ; 62 LEs                 ; No         ; |booth_pair_mul|Mux235     ;
-; 8:1                ; 31 bits   ; 155 LEs       ; 93 LEs               ; 62 LEs                 ; No         ; |booth_pair_mul|Mux269     ;
-; 8:1                ; 31 bits   ; 155 LEs       ; 93 LEs               ; 62 LEs                 ; No         ; |booth_pair_mul|Mux349     ;
-; 8:1                ; 31 bits   ; 155 LEs       ; 93 LEs               ; 62 LEs                 ; No         ; |booth_pair_mul|Mux391     ;
-; 8:1                ; 31 bits   ; 155 LEs       ; 93 LEs               ; 62 LEs                 ; No         ; |booth_pair_mul|Mux454     ;
-; 8:1                ; 47 bits   ; 235 LEs       ; 141 LEs              ; 94 LEs                 ; No         ; |booth_pair_mul|Mux502     ;
-; 8:1                ; 45 bits   ; 225 LEs       ; 135 LEs              ; 90 LEs                 ; No         ; |booth_pair_mul|Mux548     ;
-; 8:1                ; 43 bits   ; 215 LEs       ; 129 LEs              ; 86 LEs                 ; No         ; |booth_pair_mul|Mux592     ;
-; 8:1                ; 41 bits   ; 205 LEs       ; 123 LEs              ; 82 LEs                 ; No         ; |booth_pair_mul|Mux634     ;
-; 8:1                ; 39 bits   ; 195 LEs       ; 117 LEs              ; 78 LEs                 ; No         ; |booth_pair_mul|Mux674     ;
-; 8:1                ; 37 bits   ; 185 LEs       ; 111 LEs              ; 74 LEs                 ; No         ; |booth_pair_mul|Mux712     ;
-; 8:1                ; 35 bits   ; 175 LEs       ; 105 LEs              ; 70 LEs                 ; No         ; |booth_pair_mul|Mux748     ;
-; 8:1                ; 33 bits   ; 165 LEs       ; 99 LEs               ; 66 LEs                 ; No         ; |booth_pair_mul|Mux782     ;
-; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |booth_pair_mul|Mux92      ;
-; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |booth_pair_mul|Mux126     ;
-; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |booth_pair_mul|Mux186     ;
-; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |booth_pair_mul|Mux266     ;
-; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |booth_pair_mul|Mux320     ;
-; 8:1                ; 2 bits    ; 10 LEs        ; 6 LEs                ; 4 LEs                  ; No         ; |booth_pair_mul|Mux372     ;
-; 6:1                ; 18 bits   ; 72 LEs        ; 54 LEs               ; 18 LEs                 ; No         ; |booth_pair_mul|Mux415     ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-
-
 +-----------------------------------------------------+
 ; Post-Synthesis Netlist Statistics for Top Partition ;
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_lcell_comb     ; 3224                        ;
-;     arith             ; 2102                        ;
+; arriav_lcell_comb     ; 3979                        ;
+;     arith             ; 1121                        ;
 ;         0 data inputs ; 32                          ;
-;         1 data inputs ; 72                          ;
-;         2 data inputs ; 172                         ;
-;         3 data inputs ; 2                           ;
-;         4 data inputs ; 70                          ;
-;         5 data inputs ; 1754                        ;
-;     normal            ; 1122                        ;
-;         2 data inputs ; 57                          ;
-;         3 data inputs ; 434                         ;
-;         4 data inputs ; 23                          ;
-;         5 data inputs ; 110                         ;
-;         6 data inputs ; 498                         ;
+;         1 data inputs ; 64                          ;
+;         3 data inputs ; 30                          ;
+;         4 data inputs ; 64                          ;
+;         5 data inputs ; 931                         ;
+;     normal            ; 2858                        ;
+;         2 data inputs ; 211                         ;
+;         3 data inputs ; 96                          ;
+;         4 data inputs ; 471                         ;
+;         5 data inputs ; 727                         ;
+;         6 data inputs ; 1353                        ;
 ; boundary_port         ; 128                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 46.30                       ;
-; Average LUT depth     ; 42.04                       ;
+; Max LUT depth         ; 157.30                      ;
+; Average LUT depth     ; 153.36                      ;
 +-----------------------+-----------------------------+
 
 
@@ -295,7 +260,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:05     ;
+; Top            ; 00:00:15     ;
 +----------------+--------------+
 
 
@@ -305,7 +270,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Thu Feb 06 13:15:20 2025
+    Info: Processing started: Mon Feb 10 13:54:44 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ELEC374Phase1 -c ELEC374Phase1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
@@ -313,7 +278,6 @@ Info (12021): Found 1 design units, including 1 entities, in source file registe
     Info (12023): Found entity 1: register File: C:/Users/jpbru/Documents/GitHub/ELEC_374/registerclass.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file bus.v
     Info (12023): Found entity 1: Bus File: C:/Users/jpbru/Documents/GitHub/ELEC_374/Bus.v Line: 1
-Info (12021): Found 0 design units, including 0 entities, in source file boothmul.v
 Info (12021): Found 1 design units, including 1 entities, in source file testbench.v
     Info (12023): Found entity 1: testbench File: C:/Users/jpbru/Documents/GitHub/ELEC_374/testbench.v Line: 3
 Info (12021): Found 1 design units, including 1 entities, in source file subtractor.v
@@ -360,21 +324,22 @@ Info (12021): Found 1 design units, including 1 entities, in source file booth_p
     Info (12023): Found entity 1: booth_pair_mul File: C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul.v Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file booth_pair_mul_tb.v
     Info (12023): Found entity 1: booth_pair_mul_tb File: C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul_tb.v Line: 2
-Info (12127): Elaborating entity "booth_pair_mul" for the top level hierarchy
-Warning (10199): Verilog HDL Case Statement warning at booth_pair_mul.v(24): case item expression never matches the case expression File: C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul.v Line: 24
-Warning (10199): Verilog HDL Case Statement warning at booth_pair_mul.v(25): case item expression never matches the case expression File: C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul.v Line: 25
-Warning (10199): Verilog HDL Case Statement warning at booth_pair_mul.v(27): case item expression never matches the case expression File: C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul.v Line: 27
+Info (12021): Found 1 design units, including 1 entities, in source file div.v
+    Info (12023): Found entity 1: div File: C:/Users/jpbru/Documents/GitHub/ELEC_374/div.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file div_tb.v
+    Info (12023): Found entity 1: div_tb File: C:/Users/jpbru/Documents/GitHub/ELEC_374/div_tb.v Line: 3
+Info (12127): Elaborating entity "div" for the top level hierarchy
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 3352 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 4107 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 64 input pins
     Info (21059): Implemented 64 output pins
-    Info (21061): Implemented 3224 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 4 warnings
-    Info: Peak virtual memory: 4862 megabytes
-    Info: Processing ended: Thu Feb 06 13:15:40 2025
-    Info: Elapsed time: 00:00:20
-    Info: Total CPU time (on all processors): 00:00:17
+    Info (21061): Implemented 3979 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 4859 megabytes
+    Info: Processing ended: Mon Feb 10 13:55:14 2025
+    Info: Elapsed time: 00:00:30
+    Info: Total CPU time (on all processors): 00:00:21
 
 

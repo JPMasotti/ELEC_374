@@ -10,34 +10,33 @@
 # Copying C:/intelFPGA_lite/18.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
 # Modifying modelsim.ini
 # 
-# vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul.v}
+# vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/div.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:15:55 on Feb 06,2025
-# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374" C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul.v 
-# -- Compiling module booth_pair_mul
-# ** Warning: C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul.v(15): (vlog-2182) 'M' might be read before written in always_comb or always @* block.
+# Start time: 13:55:30 on Feb 10,2025
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374" C:/Users/jpbru/Documents/GitHub/ELEC_374/div.v 
+# -- Compiling module div
 # 
 # Top level modules:
-# 	booth_pair_mul
-# End time: 13:15:55 on Feb 06,2025, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 1
-# 
-# vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul_tb.v}
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:15:55 on Feb 06,2025
-# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374" C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul_tb.v 
-# -- Compiling module booth_pair_mul_tb
-# 
-# Top level modules:
-# 	booth_pair_mul_tb
-# End time: 13:15:55 on Feb 06,2025, Elapsed time: 0:00:00
+# 	div
+# End time: 13:55:30 on Feb 10,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
-# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  booth_pair_mul_tb
-# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs=""+acc"" booth_pair_mul_tb 
-# Start time: 13:15:56 on Feb 06,2025
-# Loading work.booth_pair_mul_tb
-# Loading work.booth_pair_mul
+# vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/div_tb.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:55:30 on Feb 10,2025
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374" C:/Users/jpbru/Documents/GitHub/ELEC_374/div_tb.v 
+# -- Compiling module div_tb
+# 
+# Top level modules:
+# 	div_tb
+# End time: 13:55:30 on Feb 10,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  div_tb
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs=""+acc"" div_tb 
+# Start time: 13:55:30 on Feb 10,2025
+# Loading work.div_tb
+# Loading work.div
 # 
 # add wave *
 # view structure
@@ -45,9 +44,16 @@
 # view signals
 # .main_pane.objects.interior.cs.body.tree
 # run -all
-# ** Note: $finish    : C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul_tb.v(34)
-#    Time: 60 ns  Iteration: 0  Instance: /booth_pair_mul_tb
+# Test 1: 100 / 3 = Quotient:         33, Remainder:          1
+# Test 2: 100 / -3 = Quotient: 4294967263, Remainder:          1
+# Test 3: -100 / 3 = Quotient: 4294967263, Remainder:          1
+# Test 4: -100 / -3 = Quotient:         33, Remainder:          1
+# Test 5: 5 / 20 = Quotient:          0, Remainder:          5
+# Test 6: 0 / 7 = Quotient:          0, Remainder:          0
+# Test 7: 20 / 20 = Quotient:          1, Remainder:          0
+# ** Note: $finish    : C:/Users/jpbru/Documents/GitHub/ELEC_374/div_tb.v(62)
+#    Time: 80 ns  Iteration: 0  Instance: /div_tb
 # 1
-# Break in Module booth_pair_mul_tb at C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul_tb.v line 34
-# End time: 13:18:19 on Feb 06,2025, Elapsed time: 0:02:23
+# Break in Module div_tb at C:/Users/jpbru/Documents/GitHub/ELEC_374/div_tb.v line 62
+# End time: 13:56:58 on Feb 10,2025, Elapsed time: 0:01:28
 # Errors: 0, Warnings: 0

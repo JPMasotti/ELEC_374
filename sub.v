@@ -8,6 +8,6 @@ module sub(A, B, result);
   wire [31:0] negB;
 
   neg32 negative(B, negB);
-  add add(A, negB, result);
+  add32 add(A, negB, result);
 
 endmodule

@@ -8,46 +8,46 @@ z2
 !i10f 100
 cModel Technology
 Z0 dC:/Users/jpbru/Documents/GitHub/ELEC_374/simulation/modelsim
-vbooth_pair_mul
-Z1 !s110 1738865755
+vdiv
+Z1 !s110 1739213730
 !i10b 1
-!s100 gOjEFkTQSIWFRScn>Y0Kl3
-I48TNHa=HjY[MY;^[^zO3[3
+!s100 >nfWj2_FUPFXWbiPN7SXl2
+I_ZlYQQn9<`o[D6z[T94?40
 Z2 VDg1SIo80bB@j0V0VzS_@n1
 R0
-w1738865717
-8C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul.v
-FC:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul.v
+w1739213682
+8C:/Users/jpbru/Documents/GitHub/ELEC_374/div.v
+FC:/Users/jpbru/Documents/GitHub/ELEC_374/div.v
 L0 2
 Z3 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z4 !s108 1738865755.000000
-!s107 C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul.v|
-!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374|C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul.v|
+Z4 !s108 1739213730.000000
+!s107 C:/Users/jpbru/Documents/GitHub/ELEC_374/div.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374|C:/Users/jpbru/Documents/GitHub/ELEC_374/div.v|
 !i113 1
 Z5 o-vlog01compat -work work
 Z6 !s92 -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374
 Z7 tCvgOpt 0
-vbooth_pair_mul_tb
+vdiv_tb
 R1
 !i10b 1
-!s100 lBDhB4n6OKOQb:09;8TYT3
-Ih=KUC>b:1IG0?QiLag6F@3
+!s100 LZoo0D:nBFFWLP55V>U^22
+I?Qed_1e<T]5i9:eCKJTdb1
 R2
 R0
-w1738862600
-8C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul_tb.v
-FC:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul_tb.v
-L0 2
+w1739212369
+8C:/Users/jpbru/Documents/GitHub/ELEC_374/div_tb.v
+FC:/Users/jpbru/Documents/GitHub/ELEC_374/div_tb.v
+L0 3
 R3
 r1
 !s85 0
 31
 R4
-!s107 C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul_tb.v|
-!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374|C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul_tb.v|
+!s107 C:/Users/jpbru/Documents/GitHub/ELEC_374/div_tb.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374|C:/Users/jpbru/Documents/GitHub/ELEC_374/div_tb.v|
 !i113 1
 R5
 R6
