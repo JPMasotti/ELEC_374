@@ -1,9 +1,7 @@
-module and(
-    input  wire [31:0] A,
-    input  wire [31:0] B,
-    output reg  [31:0] result
+module and32 (
+    input [31:0] A,
+    input [31:0] B,
+    output [31:0] Y
 );
-    always @(*) begin
-        result = A & B;
-    end
+    assign Y = A & B;  // Perform bitwise AND
 endmodule

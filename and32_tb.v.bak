@@ -1,0 +1,33 @@
+module and32_tb;
+    reg Clock, clear_tb;
+    reg R3out_tb, R7out_tb, R4in_tb, AND_tb;
+    wire [31:0] BusMuxOut;
+
+    // Instantiate the DataPath with and32 module
+    DataPath DUT (
+        .clock(Clock),
+        .clear(clear_tb),
+        .R3out(R3out_tb),
+        .R7out(R7out_tb),
+        .R4in(R4in_tb),
+        .AND(AND_tb),
+        .BusMuxOut(BusMuxOut)
+    );
+
+    initial begin
+        Clock = 0;
+        clear_tb = 1;  // Start with reset
+        #10 clear_tb = 0;
+
+        // Initialize values
+        #10 R3out_tb = 1;  // Drive R3 onto the bus
+            R7out_tb = 1;  // Drive R7 onto the bus
+            AND_tb = 1;    // Perform AND operation
+
+        #20 R3out_tb = 0; R7out_tb = 0; AND_tb = 0;
+        #30 $finish;
+    end
+
+    always #5 Clock = ~Clock;  // Clock toggles every 5 ns
+
+endmodule

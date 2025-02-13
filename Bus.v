@@ -1,63 +1,55 @@
 module Bus (
-	// Mux
-	input [31:0] BusMuxInR0,
-	input [31:0] BusMuxInR1,
-	input [31:0] BusMuxInR2,
-	input [31:0] BusMuxInR3,
-	input [31:0] BusMuxInR4,
-	input [31:0] BusMuxInR5,
-	input [31:0] BusMuxInR6,
-	input [31:0] BusMuxInR7,
-	input [31:0] BusMuxInR8,
-	input [31:0] BusMuxInR9,
-	input [31:0] BusMuxInR10,
-	input [31:0] BusMuxInR11,
-	input [31:0] BusMuxInR12,
-	input [31:0] BusMuxInR13,
-	input [31:0] BusMuxInR14,
-	input [31:0] BusMuxInR15,
-	input [31:0] BusMuxInRZ,
-	input [31:0] BusMuxInHI,
-	input [31:0] BusMuxInLO,
-	input [31:0] BusMuxInPC,
-	input [31:0] BusMuxInIR,
-	input [31:0] BusMuxInY,
-	input [31:0] BusMuxInMAR,
+    // Mux inputs
+    input [31:0] BusMuxInR0, BusMuxInR1, BusMuxInR2, BusMuxInR3,
+    input [31:0] BusMuxInR4, BusMuxInR5, BusMuxInR6, BusMuxInR7,
+    input [31:0] BusMuxInR8, BusMuxInR9, BusMuxInR10, BusMuxInR11,
+    input [31:0] BusMuxInR12, BusMuxInR13, BusMuxInR14, BusMuxInR15,
+    input [31:0] BusMuxInHI, BusMuxInLO, BusMuxInPC, BusMuxInIR, 
+    input [31:0] BusMuxInMAR, BusMuxInMDR, Zreg, Yreg,
 
-	input wire R0out, R1out, R2out, R3out, R4out, R5out, R6out,
-	input wire R7out, R8out, R9out, R10out, R11out, R12out, R13out, R14out, R15out,
-	input wire Zlowout, Zhighout, HIout, LOout, PCout, IRout, Yin, MARout,
+    // Control signals
+    input wire R0out, R1out, R2out, R3out, R4out, R5out, R6out, R7out,
+    input wire R8out, R9out, R10out, R11out, R12out, R13out, R14out, R15out,
+    input wire RZout, Zlowout, Zhighout, HIout, LOout, PCout, IRout, Yout, MARout, MDRout,
 
-	output wire [31:0] BusMuxOut
+    // Output
+    output wire [31:0] BusMuxOut
 );
 
 reg [31:0] q;
 
-always @ (*) begin
-	if (R0out) q = BusMuxInR0;
-	if (R1out) q = BusMuxInR1;
-	if (R2out) q = BusMuxInR2;
-	if (R3out) q = BusMuxInR3;
-	if (R4out) q = BusMuxInR4;
-	if (R5out) q = BusMuxInR5;
-	if (R6out) q = BusMuxInR6;
-	if (R7out) q = BusMuxInR7;
-	if (R8out) q = BusMuxInR8;
-	if (R9out) q = BusMuxInR9;
-	if (R10out) q = BusMuxInR10;
-	if (R11out) q = BusMuxInR11;
-	if (R12out) q = BusMuxInR12;
-	if (R13out) q = BusMuxInR13;
-	if (R14out) q = BusMuxInR14;
-	if (R15out) q = BusMuxInR15;
-	if (Zlowout) q = BusMuxInRZ; 
-	if (HIout) q = BusMuxInHI;
-	if (LOout) q = BusMuxInLO;
-	if (PCout) q = BusMuxInPC;
-	if (IRout) q = BusMuxInIR;
-	if (Yin) q = BusMuxInY; 
-	if (MARout) q = BusMuxInMAR;
-	//else q = 32'b0; //default??
+always @(*) begin
+    // Default the output to high impedance
+    q = 32'bz;
+
+    case (1'b1) // Only one active signal should drive BusMuxOut
+        R0out: q = BusMuxInR0;
+        R1out: q = BusMuxInR1;
+        R2out: q = BusMuxInR2;
+        R3out: q = BusMuxInR3;
+        R4out: q = BusMuxInR4;
+        R5out: q = BusMuxInR5;
+        R6out: q = BusMuxInR6;
+        R7out: q = BusMuxInR7;
+        R8out: q = BusMuxInR8;
+        R9out: q = BusMuxInR9;
+        R10out: q = BusMuxInR10;
+        R11out: q = BusMuxInR11;
+        R12out: q = BusMuxInR12;
+        R13out: q = BusMuxInR13;
+        R14out: q = BusMuxInR14;
+        R15out: q = BusMuxInR15;
+        RZout, Zlowout, Zhighout: q = Zreg; // Ensure only one selects `Zreg`
+        HIout: q = BusMuxInHI;
+        LOout: q = BusMuxInLO;
+        PCout: q = BusMuxInPC;
+        IRout: q = BusMuxInIR;
+        Yout: q = Yreg;  // Ensure `Yreg` can be read properly
+        MARout: q = BusMuxInMAR;
+        MDRout: q = BusMuxInMDR;
+    endcase
+	 
+	 $display("BUS DEBUG: Time=%0d, Selected Register Value=%b", $time, q);
 end
 
 assign BusMuxOut = q;

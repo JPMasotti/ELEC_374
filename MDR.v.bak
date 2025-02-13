@@ -1,0 +1,7 @@
+module MDR(output [31:0] Q, input [31:0] BusMuxOut, MDatain,
+input clock, clear, MDRin, read);
+
+	
+
+
+endmodule
