@@ -1,15 +1,13 @@
 `timescale 1ns/10ps
 
-module or32_tb;
+module and_tb;
     // Test signals
     reg clock_tb;
     reg clear_tb;
-    reg read_tb;
-    reg PCout_tb, Zlowout_tb, MDRout_tb, R3out_tb, R7out_tb, R4out_tb, RZout_tb;
+    reg PCout_tb, Zlowout_tb, MDRout_tb, R3out_tb, R7out_tb;
     reg MARin_tb, Zin_tb, PCin_tb, MDRin_tb, IRin_tb, Yin_tb;
     reg R3in_tb, R4in_tb, R7in_tb;
     reg [31:0] Mdatain_tb;
-    reg [7:0] ALU_control_tb;
     wire [31:0] BusMuxOut_tb;
 
     // States for finite state machine
@@ -19,26 +17,25 @@ module or32_tb;
 
     reg [3:0] Present_state = Default;
 
+    // Instantiate the DataPath module
     DataPath DUT (
         .clock(clock_tb),
         .clear(clear_tb),
-        .read(read_tb),
-        .ALU_control(ALU_control_tb),
         .PCout(PCout_tb), .Zlowout(Zlowout_tb), .MDRout(MDRout_tb), 
-        .R3out(R3out_tb), .R7out(R7out_tb), .R4out(R4out_tb),
+        .R3out(R3out_tb), .R7out(R7out_tb),
         .MARin(MARin_tb), .Zin(Zin_tb), .PCin(PCin_tb), 
         .MDRin(MDRin_tb), .IRin(IRin_tb), .Yin(Yin_tb), 
         .R3in(R3in_tb), .R4in(R4in_tb), .R7in(R7in_tb),
-        .Mdatain(Mdatain_tb), .RZout(RZout_tb),
+        .Mdatain(Mdatain_tb),
         .BusMuxOut(BusMuxOut_tb),
 
         // Unconnected signals
-        .R0out(), .R1out(), .R2out(), .R5out(), .R6out(), 
+        .R0out(), .R1out(), .R2out(), .R4out(), .R5out(), .R6out(), 
         .R8out(), .R9out(), .R10out(), .R11out(), .R12out(), .R13out(), 
         .R14out(), .R15out(), 
         .R0in(), .R1in(), .R2in(), .R5in(), .R6in(), .R8in(), .R9in(), 
         .R10in(), .R11in(), .R12in(), .R13in(), .R14in(), .R15in(),
-        .HIin(), .HIout(), .LOin(), .LOout(), .Zhighout(), .IRout(), .MARout()
+        .HIin(), .HIout(), .LOin(), .LOout(), .Zhighout()
     );
 
     // Clock generation
@@ -70,12 +67,11 @@ module or32_tb;
         R3out_tb = 0; R7out_tb = 0; MARin_tb = 0; Zin_tb = 0;
         PCin_tb = 0; MDRin_tb = 0; IRin_tb = 0; Yin_tb = 0;
         R3in_tb = 0; R4in_tb = 0; R7in_tb = 0;
-        read_tb = 1; clear_tb = 0; R4out_tb = 0;
-        Mdatain_tb = 32'h00000000; ALU_control_tb = 8'b00000011; // OR operation
+        Mdatain_tb = 32'h00000000;
 
         case (Present_state)
             Reg_load1a: begin  // Load value into R3
-                Mdatain_tb <= 32'b1101;  // Test value for R3
+                Mdatain_tb <= 32'h00000022;
                 MDRin_tb <= 1;
             end
             Reg_load1b: begin
@@ -84,36 +80,43 @@ module or32_tb;
             end
             Reg_load2a: begin  // Load value into R7
                 MDRout_tb <= 0; R3in_tb <= 0;
-                Mdatain_tb <= 32'b0111;  // Test value for R7
+                Mdatain_tb <= 32'h00000024;
                 MDRin_tb <= 1;
             end
             Reg_load2b: begin
                 MDRin_tb <= 0;
                 MDRout_tb <= 1; R7in_tb <= 1;
             end
-                
             T0: begin
                 MDRout_tb <= 0; R7in_tb <= 0;
                 PCout_tb <= 1; MARin_tb <= 1;
             end
             T1: begin
                 PCout_tb <= 0; MARin_tb <= 0;
-                R3out_tb <= 1; Yin_tb <= 1;
+                Mdatain_tb <= 32'h2A2B8000;  // Opcode for AND R4, R3, R7
+                MDRin_tb <= 1;
             end
             T2: begin
-                R3out_tb <= 0; Yin_tb <= 0;
-                R7out_tb <= 1; Zin_tb <= 1;
-                #10;
+                MDRin_tb <= 0;
+                MDRout_tb <= 1; IRin_tb <= 1;
             end
             T3: begin
-                R7out_tb <= 0; Zin_tb <= 0;
-                Zlowout_tb <= 1; R4in_tb <= 1;  // Store the result in R4
+                MDRout_tb <= 0; IRin_tb <= 0;
+                R3out_tb <= 1; Yin_tb <= 1;
             end
             T4: begin
-                Zlowout_tb <= 0; R4in_tb <= 0;  // Finish operation
+                R3out_tb <= 0; Yin_tb <= 0;
+                R7out_tb <= 1; Zin_tb <= 1;
             end
-            
+            T5: begin
+                R7out_tb <= 0; Zin_tb <= 0;
+                Zlowout_tb <= 1; R4in_tb <= 1;
+            end
         endcase
     end
 
+    // End simulation after some time
+//    initial begin
+//        #200 $finish;
+//    end
 endmodule

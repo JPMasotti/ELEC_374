@@ -1,5 +1,5 @@
 // Ripple Carry Adder
-module adder(A, B, result);
+module add32(A, B, result);
 
 input [31:0] A, B;
 output [31:0] result;
@@ -17,5 +17,5 @@ always@(A or B)
 				result[i] = A[i] ^ B[i] ^ LocalCarry[i];
 				LocalCarry[i+1] = (A[i] & B[i])|(LocalCarry[i] & (A[i] | B[i]));
 		end
-end
+	end
 endmodule

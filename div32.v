@@ -1,0 +1,39 @@
+module div32(
+    input [31:0] dividend,
+    input [31:0] divisor,
+    output reg [31:0] quotient,
+    output reg [31:0] remainder
+);
+    integer i;
+    reg [31:0] temp_dividend, Q, M;
+    
+    always @(*) begin
+        // Work on absolute values.
+        Q = dividend;
+        M = divisor;
+        if (Q[31])
+            Q = -Q;
+        if (M[31])
+            M = -M;
+        
+        quotient = 0;
+        remainder = 0;
+        temp_dividend = Q;
+        
+        // Standard restoring division algorithm.
+        for (i = 31; i >= 0; i = i - 1) begin
+            remainder = remainder << 1;
+            remainder[0] = temp_dividend[31];
+            temp_dividend = temp_dividend << 1;
+            if (remainder >= M) begin
+                remainder = remainder - M;
+                quotient[i] = 1;
+            end
+        end
+        
+        if (dividend[31])
+            remainder = -remainder;
+        if (dividend[31] ^ divisor[31])
+            quotient = -quotient;
+    end
+endmodule

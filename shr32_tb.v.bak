@@ -1,0 +1,160 @@
+`timescale 1ns/10ps
+
+module shr32_tb;
+    // Test signals
+    reg clock_tb;
+    reg clear_tb;
+    reg read_tb;
+    reg Zlowout_tb, MDRout_tb;
+    reg R3out_tb, R4out_tb, RZout_tb;
+    reg MARin_tb, Zin_tb, PCin_tb, MDRin_tb, IRin_tb, Yin_tb;
+    reg R3in_tb, R4in_tb;
+    reg PCout_tb;
+    reg [31:0] Mdatain_tb, IncPC_tb;
+    reg [7:0] ALU_control_tb;
+    wire [31:0] BusMuxOut_tb, PCreg_tb, PCincremented_tb;
+    
+    // FSM States
+    parameter Default    = 4'b0000,
+              Reg_load1a = 4'b0001,   // Load R3 with test value
+              Reg_load1b = 4'b0010,   
+              T0         = 4'b0101,   // PCout, MARin, IncPC, Zin (fetch cycle)
+              T1         = 4'b0110,   // Zlowout, PCin, Read, Mdatain, MDRin
+              T2         = 4'b0111,   // MDRout, IRin
+              T3         = 4'b1000,   // R3out, Yin  (load operand into Y)
+              T4         = 4'b1001,   // SHR, Zin    (perform shift right)
+              T5         = 4'b1010;   // Zlowout, R4in  (store result in R4)
+              
+    reg [3:0] Present_state = Default;
+
+    // Instantiate your datapath (adjust port connections as needed)
+    DataPath DUT (
+        .clock(clock_tb),
+        .clear(clear_tb),
+        .read(read_tb),
+        .ALU_control(ALU_control_tb),
+        .PCout(PCout_tb), 
+        .Zlowout(Zlowout_tb), 
+        .MDRout(MDRout_tb), 
+        .R3out(R3out_tb),
+        .R4out(R4out_tb),
+        .MARin(MARin_tb), 
+        .Zin(Zin_tb), 
+        .PCin(PCin_tb), 
+        .MDRin(MDRin_tb), 
+        .IRin(IRin_tb), 
+        .Yin(Yin_tb), 
+        .R3in(R3in_tb),
+        .R4in(R4in_tb),
+        .Mdatain(Mdatain_tb),
+        .BusMuxOut(BusMuxOut_tb), 
+        .IncPC(IncPC_tb), 
+        .PCincremented(PCincremented_tb), 
+        .PCreg(PCreg_tb),
+        // Unused signals left unconnected:
+        .R0out(), .R1out(), .R2out(), .R5out(), .R6out(), .R7out(),
+        .R8out(), .R9out(), .R10out(), .R11out(), .R12out(), .R13out(), 
+        .R14out(), .R15out(),
+        .R0in(), .R1in(), .R2in(), .R5in(), .R6in(), .R7in(),
+        .R8in(), .R9in(), .R10in(), .R11in(), .R12in(), .R13in(),
+        .R14in(), .R15in(),
+        .HIin(), .HIout(), .LOin(), .LOout(), .Zhighout(), .IRout(), .MARout(), .RZout()
+    );
+    
+    // Clock generation: 10ns period
+    initial begin
+        clock_tb = 0;
+        forever #10 clock_tb = ~clock_tb;
+    end
+     
+    // FSM for control sequence
+    always @(posedge clock_tb) begin
+        case (Present_state)
+            Default:      Present_state <= Reg_load1a;
+            Reg_load1a:   Present_state <= Reg_load1b;
+            Reg_load1b:   Present_state <= T0;
+            T0:           Present_state <= T1;
+            T1:           Present_state <= T2;
+            T2:           Present_state <= T3;
+            T3:           Present_state <= T4;
+            T4:           Present_state <= T5;
+            T5:           Present_state <= Default;  // Loop back to default or finish simulation
+            default:      Present_state <= Default;
+        endcase
+    end
+
+    // Control signal assignments based on FSM state
+    always @(Present_state) begin
+        // Set defaults: deassert all signals
+        PCout_tb    = 0;
+        Zlowout_tb  = 0;
+        MDRout_tb   = 0;
+        R3out_tb    = 0;
+        R4out_tb    = 0;
+        MARin_tb    = 0;
+        Zin_tb      = 0;
+        PCin_tb     = 0;
+        MDRin_tb    = 0;
+        IRin_tb     = 0;
+        Yin_tb      = 0;
+        R3in_tb     = 0;
+        R4in_tb     = 0;
+        read_tb     = 0;
+        clear_tb    = 0;
+        IncPC_tb    = 0;
+        Mdatain_tb  = 32'h00000000;
+        // Default ALU control: for SHR operation, use 8'b00001101 (example)
+        ALU_control_tb = 8'b00001101;
+        
+        case (Present_state)
+            // Load R3 with the test value (operand to be shifted)
+            Reg_load1a: begin
+                Mdatain_tb <= 32'hF0F0F0F0; // Example 32-bit value to be shifted
+                read_tb    <= 1;
+                MDRin_tb   <= 1;
+            end
+            Reg_load1b: begin
+                read_tb    <= 0;
+                MDRin_tb   <= 0;
+                MDRout_tb  <= 1;
+                R3in_tb    <= 1;
+            end
+            // T0: Instruction fetch part 1: PCout, MARin, IncPC, Zin
+            T0: begin
+                PCout_tb   <= 1;
+                MARin_tb   <= 1;
+                IncPC_tb   <= 1;
+                Zin_tb     <= 1;
+            end
+            // T1: Instruction fetch part 2: Zlowout, PCin, Read, MDRin with dummy opcode
+            T1: begin
+                Zlowout_tb <= 1;
+                PCin_tb    <= 1;
+                read_tb    <= 1;
+                MDRin_tb   <= 1;
+                Mdatain_tb <= 32'hXXXX_XXXX; // Dummy instruction opcode (can be any value)
+            end
+            // T2: Load the instruction into IR: MDRout, IRin
+            T2: begin
+                MDRout_tb  <= 1;
+                IRin_tb    <= 1;
+            end
+            // T3: Load R3 value into Y: R3out, Yin
+            T3: begin
+                R3out_tb   <= 1;
+                Yin_tb     <= 1;
+            end
+            // T4: Perform the shift right operation: SHR, Zin
+            T4: begin
+                // ALU_control_tb is already set for SHR (8'b00001101)
+                Zin_tb     <= 1;
+            end
+            // T5: Store the lower 32 bits of Z (the shifted result) into R4: Zlowout, R4in
+            T5: begin
+                Zlowout_tb <= 1;
+                R4in_tb    <= 1;
+            end
+        endcase
+    end
+
+endmodule

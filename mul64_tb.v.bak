@@ -1,16 +1,16 @@
 `timescale 1ns/10ps
 
-module or32_tb;
+module mul64_tb;
     // Test signals
     reg clock_tb;
     reg clear_tb;
-    reg read_tb;
+	 reg read_tb;
     reg PCout_tb, Zlowout_tb, MDRout_tb, R3out_tb, R7out_tb, R4out_tb, RZout_tb;
     reg MARin_tb, Zin_tb, PCin_tb, MDRin_tb, IRin_tb, Yin_tb;
     reg R3in_tb, R4in_tb, R7in_tb;
     reg [31:0] Mdatain_tb;
-    reg [7:0] ALU_control_tb;
-    wire [31:0] BusMuxOut_tb;
+	 reg [7:0] ALU_control_tb;
+    wire [31:0] BusMuxOut_tb, PCreg_tb, PCout_tb, PCincremented_tb;
 
     // States for finite state machine
     parameter Default = 4'b0000, Reg_load1a = 4'b0001, Reg_load1b = 4'b0010, 
@@ -22,15 +22,15 @@ module or32_tb;
     DataPath DUT (
         .clock(clock_tb),
         .clear(clear_tb),
-        .read(read_tb),
-        .ALU_control(ALU_control_tb),
+		  .read(read_tb),
+		  .ALU_control(ALU_control_tb),
         .PCout(PCout_tb), .Zlowout(Zlowout_tb), .MDRout(MDRout_tb), 
         .R3out(R3out_tb), .R7out(R7out_tb), .R4out(R4out_tb),
         .MARin(MARin_tb), .Zin(Zin_tb), .PCin(PCin_tb), 
         .MDRin(MDRin_tb), .IRin(IRin_tb), .Yin(Yin_tb), 
         .R3in(R3in_tb), .R4in(R4in_tb), .R7in(R7in_tb),
         .Mdatain(Mdatain_tb), .RZout(RZout_tb),
-        .BusMuxOut(BusMuxOut_tb),
+        .BusMuxOut(BusMuxOut_tb), .IncPC(IncPC_tb), .PCincremented(PCincremented_tb), .PCreg(PCreg_tb),
 
         // Unconnected signals
         .R0out(), .R1out(), .R2out(), .R5out(), .R6out(), 
@@ -44,8 +44,44 @@ module or32_tb;
     // Clock generation
     initial begin
         clock_tb = 0;
-        forever #10 clock_tb = ~clock_tb;  // 10ns clock period
+        forever #10
+		  clock_tb = ~clock_tb;  // 10ns clock period
     end
+	 
+	 
+//	     // Test sequence (keeping original structure)
+//    initial begin
+//        clear_tb = 1; #10 clear_tb = 0;  
+//
+//        // Load R3 with 111001 (0x39)
+//        Mdatain_tb = 32'b0111;
+//        #10 R3out_tb = 1; Yin_tb = 1;  
+//        #15 R3out_tb = 0; Yin_tb = 0;
+//
+//        // Load R7 with 110011 (0x33)
+//        Mdatain_tb = 32'b1101;
+//        #10 R7out_tb = 1; Zin_tb = 1;  
+//        #15 R7out_tb = 0; Zin_tb = 0;
+//
+//        // Perform AND operation (R3 AND R7)
+//        ALU_control_tb = 8'b00000010;  // Ensuring AND operation
+//        #10 R3out_tb = 1; Yin_tb = 1;  
+//        #15 R3out_tb = 0; Yin_tb = 0;
+//        #10 R7out_tb = 1; Zin_tb = 1;  
+//        #15 R7out_tb = 0; Zin_tb = 0;
+//
+//        // Store ALU result into R4 via BusMuxOut
+//        #10 Zlowout_tb = 1; R4in_tb = 1;
+//        #15 Zlowout_tb = 0; R4in_tb = 0;
+//
+//        // Debugging outputs
+//        $monitor("Time=%0d, R3=%b, R7=%b, ALU_control=%b, ALU_result=%b, BusMuxOut=%b", 
+//                 $time, Mdatain_tb, Mdatain_tb, ALU_control_tb, BusMuxOut_tb, BusMuxOut_tb);
+//
+//        #30 $stop;
+//    end
+	 
+	 
 
     // FSM to control the states
     always @(posedge clock_tb) begin
@@ -70,12 +106,12 @@ module or32_tb;
         R3out_tb = 0; R7out_tb = 0; MARin_tb = 0; Zin_tb = 0;
         PCin_tb = 0; MDRin_tb = 0; IRin_tb = 0; Yin_tb = 0;
         R3in_tb = 0; R4in_tb = 0; R7in_tb = 0;
-        read_tb = 1; clear_tb = 0; R4out_tb = 0;
-        Mdatain_tb = 32'h00000000; ALU_control_tb = 8'b00000011; // OR operation
+		  read_tb = 0; clear_tb = 0; R4out_tb = 0;
+        Mdatain_tb = 32'h00000000; ALU_control_tb = 8'b00000110;
 
         case (Present_state)
             Reg_load1a: begin  // Load value into R3
-                Mdatain_tb <= 32'b1101;  // Test value for R3
+                Mdatain_tb <= 32'b0011;  // Test value for R3
                 MDRin_tb <= 1;
             end
             Reg_load1b: begin
@@ -84,35 +120,38 @@ module or32_tb;
             end
             Reg_load2a: begin  // Load value into R7
                 MDRout_tb <= 0; R3in_tb <= 0;
-                Mdatain_tb <= 32'b0111;  // Test value for R7
+                Mdatain_tb <= 32'b0010;  // Test value for R7
                 MDRin_tb <= 1;
             end
             Reg_load2b: begin
                 MDRin_tb <= 0;
                 MDRout_tb <= 1; R7in_tb <= 1;
             end
-                
-            T0: begin
-                MDRout_tb <= 0; R7in_tb <= 0;
-                PCout_tb <= 1; MARin_tb <= 1;
-            end
-            T1: begin
-                PCout_tb <= 0; MARin_tb <= 0;
-                R3out_tb <= 1; Yin_tb <= 1;
-            end
-            T2: begin
-                R3out_tb <= 0; Yin_tb <= 0;
-                R7out_tb <= 1; Zin_tb <= 1;
-                #10;
-            end
-            T3: begin
-                R7out_tb <= 0; Zin_tb <= 0;
-                Zlowout_tb <= 1; R4in_tb <= 1;  // Store the result in R4
-            end
-            T4: begin
-                Zlowout_tb <= 0; R4in_tb <= 0;  // Finish operation
-            end
-            
+				
+			  T0: begin
+					MDRout_tb <= 0; R7in_tb <= 0;
+					PCout_tb <= 1; MARin_tb <= 1;
+					IncPC_tb <= 1; Zin_tb <= 1;
+			  end
+			  T1: begin
+					Zlowout <= 1; PCin_tb <= 1; read_tb <= 1; MDRin_tb <= 1;
+					Mdatain <= 32'hF0F0F0F0;
+					PCout_tb <= 0; MARin_tb <= 0;
+					R3out_tb <= 1; Yin_tb <= 1;
+			  end
+			  T2: begin
+					R3out_tb <= 0; Yin_tb <= 0;
+					R7out_tb <= 1; Zin_tb <= 1;
+					#10;
+			  end
+			  T3: begin
+					R7out_tb <= 0; Zin_tb <= 0;
+					Zlowout_tb <= 1; R4in_tb <= 1;  // Store the result in R4
+			  end
+			  T4: begin
+					Zlowout_tb <= 0; R4in_tb <= 0;  // Finish operation
+			  end
+			  
         endcase
     end
 

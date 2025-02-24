@@ -1,0 +1,131 @@
+`timescale 1ns/10ps
+module neg32_tb;
+    // Control signals for datapath operations
+    reg PCout_tb, MARin_tb, IncPC_tb, Zin_tb, Zlowout_tb;
+    reg PCin_tb, MDRin_tb, IRin_tb;
+    reg R0out_tb, R5in_tb;
+    reg read_tb;
+    // Data and ALU control signals
+    reg [31:0] Mdatain_tb;
+    reg [7:0]  ALU_control_tb;
+    // Clock signal
+    reg Clock;
+    // Clear signal (active high)
+    reg clear_tb;
+    
+    // FSM states for the control sequence (T0 to T4)
+    parameter Default = 4'b0000,
+              T0      = 4'b0001,  // PCout, MARin, IncPC, Zin
+              T1      = 4'b0010,  // Zlowout, PCin, Read, MDRin, load dummy opcode into Mdatain
+              T2      = 4'b0011,  // MDRout, IRin
+              T3      = 4'b0100,  // R0out, NEG, Zin
+              T4      = 4'b0101;  // Zlowout, R5in
+    reg [3:0] Present_state;
+    
+    // Instantiate the datapath.
+    // (Make sure your DataPath module's port list includes the necessary signals,
+    //  for example, R0out and R5in for the registers corresponding to R0 and R5.)
+    DataPath DUT (
+        .clock(Clock),
+        .clear(clear_tb),
+        .read(read_tb),
+        .ALU_control(ALU_control_tb),
+        .PCout(PCout_tb),
+        .Zlowout(Zlowout_tb),
+        .MDRout(MDRin_tb), // Using MDRin_tb here to simulate MDRout
+        .R0out(R0out_tb),
+        .R4out(),         // Unused for NEG testbench
+        .MARin(MARin_tb),
+        .Zin(Zin_tb),
+        .PCin(PCin_tb),
+        .MDRin(MDRin_tb),
+        .IRin(IRin_tb),
+        .Yin(),           // Not used in NEG testbench
+        .R0in(),          // Not used here
+        .R4in(),          // Not used here
+        .R5in(R5in_tb),   // Destination for NEG result
+        .R7in(),          // Unused
+        .Mdatain(Mdatain_tb),
+        .BusMuxOut(),     // Assume that when R5in is asserted, BusMuxOut carries R5’s value
+        .IncPC(IncPC_tb),
+        .PCincremented(), // Unused
+        .PCreg(),         // Unused
+        .HIin(), .HIout(), .LOin(), .LOout(), .Zhighout(), .IRout(), .MARout()
+    );
+    
+    // Clock generation: 10 ns period
+    initial begin
+        Clock = 0;
+        forever #10 Clock = ~Clock;
+    end
+    
+    // Initialize FSM state and clear signal
+    initial begin
+        Present_state = Default;
+        clear_tb = 1;
+    end
+    
+    // FSM: On rising clock edges, drive the control signals according to the desired sequence
+    always @(posedge Clock) begin
+        case (Present_state)
+            Default: begin
+                // Initialize all signals
+                PCout_tb       = 0; MARin_tb   = 0; IncPC_tb  = 0; Zin_tb    = 0;
+                Zlowout_tb     = 0; PCin_tb    = 0; MDRin_tb  = 0; IRin_tb   = 0;
+                R0out_tb       = 0; R5in_tb    = 0; read_tb   = 0;
+                Mdatain_tb     = 32'h00000000;
+                ALU_control_tb = 8'b00001000; // NEG opcode
+                clear_tb       = 1;
+                Present_state  <= T0;
+            end
+            
+            T0: begin
+                // T0: PCout, MARin, IncPC, Zin (simulate fetch cycle)
+                clear_tb   = 0; // release clear
+                PCout_tb   = 1; MARin_tb = 1; IncPC_tb = 1; Zin_tb = 1;
+                Present_state <= T1;
+            end
+            
+            T1: begin
+                // T1: Zlowout, PCin, Read, MDRin; load dummy opcode into Mdatain
+                PCout_tb   = 0; MARin_tb = 0; IncPC_tb = 0; Zin_tb = 0;
+                Zlowout_tb = 1; PCin_tb = 1; read_tb = 1; MDRin_tb = 1;
+                Mdatain_tb = 32'h2A2B8000; // Dummy opcode (not used for NEG)
+                Present_state <= T2;
+            end
+            
+            T2: begin
+                // T2: MDRout, IRin (simulate loading instruction into IR)
+                Zlowout_tb = 0; PCin_tb = 0; read_tb = 0; MDRin_tb = 0;
+                MDRin_tb   = 1; IRin_tb = 1;
+                Present_state <= T3;
+            end
+            
+            T3: begin
+                // T3: R0out, NEG, Zin: load the operand from R0 and perform NEG.
+                // For testing, load the operand into R0 via Mdatain.
+                Mdatain_tb = 32'h12345678;  // Example value in R0
+                R0out_tb   = 1; // Drive the bus from R0
+                // NEG is selected via ALU_control; assert Zin so ALU_result is updated.
+                Zin_tb     = 1;
+                Present_state <= T4;
+            end
+            
+            T4: begin
+                // T4: Zlowout, R5in: transfer the lower 32 bits of ALU_result (the negated value) into R5.
+                R0out_tb = 0; // Deassert R0out
+                Zin_tb   = 0;
+                Zlowout_tb = 1; R5in_tb = 1;
+                Present_state <= Default;  // End sequence (or you can stop simulation)
+            end
+            
+            default: Present_state <= Default;
+        endcase
+    end
+    
+    // Monitor the BusMuxOut (assumed to show R5's value when R5in is asserted)
+    initial begin
+        $monitor("Time=%0t | BusMuxOut (R5) = %h", $time, BusMuxOut_tb);
+    end
+    
+endmodule

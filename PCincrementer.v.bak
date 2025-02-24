@@ -1,0 +1,22 @@
+`timescale 1ns / 10ps
+
+module PC_Incrementer (
+    input wire [31:0] PC_in,   // Current PC value
+    input wire IncPC,          // Enable incrementing
+    output wire [31:0] PC_out  // Incremented PC value
+);
+
+    wire [31:0] increment_value = 32'b1;  // Constant value of 1
+    wire [31:0] incremented_PC;           // Output of the adder
+
+    // Using the existing adder module
+    adder add1 (
+        PC_in,
+        increment_value,
+        incremented_PC
+    );
+
+    // Output only when IncPC is enabled
+    assign PC_out = (IncPC) ? incremented_PC : PC_in;
+
+endmodule

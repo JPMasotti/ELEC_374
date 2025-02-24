@@ -1,0 +1,87 @@
+//testbench for add instr
+`timescale 1ns/10ps
+
+module addinstr_tb;
+    // Testbench control signals
+    reg Clock, clear;
+    reg R0out, R1out, R2out, R3out, R4out, R5out, R6out;
+    reg R7out, R8out, R9out, R10out, R11out, R12out, R13out, R14out, R15out;
+    reg R0in, R1in, R2in, R3in, R4in, R5in, R6in, R7in;
+    reg R8in, R9in, R10in, R11in, R12in, R13in, R14in, R15in;
+    reg HIin, HIout, LOin, LOout;
+    reg PCin, PCout, IRin, Zin, Zhighout, Zlowout, Yin, MARin;
+    reg [31:0] Mdatain;
+
+    // Parameter for test states
+    parameter Default = 4'b0000, Load_R0 = 4'b0001, Load_R1 = 4'b0010, 
+              Compute = 4'b0011, Store_Result = 4'b0100;
+
+    reg [3:0] present_state;
+
+    // Instantiate the datapath
+    DataPath DUT (
+        .clock(Clock), .clear(clear), 
+        .R0out(R0out), .R1out(R1out), .R2out(R2out), .R3out(R3out),
+        .R4out(R4out), .R5out(R5out), .R6out(R6out), .R7out(R7out),
+        .R8out(R8out), .R9out(R9out), .R10out(R10out), .R11out(R11out),
+        .R12out(R12out), .R13out(R13out), .R14out(R14out), .R15out(R15out),
+        .R0in(R0in), .R1in(R1in), .R2in(R2in), .R3in(R3in),
+        .R4in(R4in), .R5in(R5in), .R6in(R6in), .R7in(R7in),
+        .R8in(R8in), .R9in(R9in), .R10in(R10in), .R11in(R11in),
+        .R12in(R12in), .R13in(R13in), .R14in(R14in), .R15in(R15in),
+        .HIin(HIin), .HIout(HIout), .LOin(LOin), .LOout(LOout),
+        .PCin(PCin), .PCout(PCout), .IRin(IRin), .Zin(Zin),
+        .Zhighout(Zhighout), .Zlowout(Zlowout), .Yin(Yin), .MARin(MARin),
+        .Mdatain(Mdatain)
+    );
+
+    // Clock generation
+    initial begin
+        Clock = 0;
+        forever #10 Clock = ~Clock;
+    end
+
+    // Test scenario
+    initial begin
+        // Initialize inputs
+        clear = 1; #20 clear = 0;
+        present_state = Default;
+    end
+
+    always @(posedge Clock) begin
+        case (present_state)
+            Default: begin
+                // Clear all registers and bus
+                R0out <= 0; R1out <= 0; R2out <= 0; R3out <= 0;
+                R0in <= 0; R1in <= 0; R2in <= 0; R3in <= 0;
+                present_state <= Load_R0;
+            end
+
+            Load_R0: begin
+                // Load a value into R0
+                Mdatain <= 32'h0000000A;
+                R0in <= 1; #15 R0in <= 0;
+                present_state <= Load_R1;
+            end
+
+            Load_R1: begin
+                // Load a value into R1
+                Mdatain <= 32'h00000014;
+                R1in <= 1; #15 R1in <= 0;
+                present_state <= Compute;
+            end
+
+            Compute: begin
+                // Perform computation: R2 = R0 + R1
+                R0out <= 1; R1out <= 1; Zin <= 1; #15 R0out <= 0; R1out <= 0; Zin <= 0;
+                present_state <= Store_Result;
+            end
+
+            Store_Result: begin
+                // Store result of the addition in R2
+                Zlowout <= 1; R2in <= 1; #15 Zlowout <= 0; R2in <= 0;
+                present_state <= Default;
+            end
+        endcase
+    end
+endmodule
