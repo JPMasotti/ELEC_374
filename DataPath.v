@@ -7,7 +7,7 @@ module DataPath(
     input wire R8in, R9in, R10in, R11in, R12in, R13in, R14in, R15in,
     input wire HIin, HIout, LOin, LOout, MDRout, MARout, PCout,
     input wire PCin, IRin, IRout, Zin, RZout, Zhighout, Zlowout, Yin, MARin, MDRin, IncPC,
-	 input wire BAout,
+    input wire BAout,
     input wire [7:0] ALU_control,
     input wire [31:0] Mdatain,
     input wire [4:0] shift_count_in,
@@ -15,17 +15,32 @@ module DataPath(
     output wire [31:0] BusMuxOut
 );
 
-  // Internal
-  wire [31:0] BusMuxInR0, BusMuxInR1, BusMuxInR2, BusMuxInR3;
-  wire [31:0] BusMuxInR4, BusMuxInR5, BusMuxInR6, BusMuxInR7;
-  wire [31:0] BusMuxInR8, BusMuxInR9, BusMuxInR10, BusMuxInR11;
-  wire [31:0] BusMuxInR12, BusMuxInR13, BusMuxInR14, BusMuxInR15;
-  wire [31:0] BusMuxInHI, BusMuxInLO, BusMuxInIR;
-  wire [31:0] HIreg, LOreg, IRreg, Yreg, MARreg, MDRreg;
-  wire [63:0] ALU_result;
-  wire [63:0] Zreg;
-  wire [31:0] BusLO = Zreg[31:0];
-  wire [31:0] BusHI = Zreg[63:32];
+    wire [31:0] BusMuxInR0, BusMuxInR1, BusMuxInR2, BusMuxInR3;
+    wire [31:0] BusMuxInR4, BusMuxInR5, BusMuxInR6, BusMuxInR7;
+    wire [31:0] BusMuxInR8, BusMuxInR9, BusMuxInR10, BusMuxInR11;
+    wire [31:0] BusMuxInR12, BusMuxInR13, BusMuxInR14, BusMuxInR15;
+    wire [31:0] BusMuxInHI, BusMuxInLO, BusMuxInIR;
+    wire [31:0] HIreg, LOreg, IRreg, Yreg, MARreg, MDRreg;
+    wire [63:0] ALU_result;
+    wire [63:0] Zreg;
+    wire [31:0] BusLO = Zreg[31:0];
+    wire [31:0] BusHI = Zreg[63:32];
+
+    wire [31:0] memory_data_out;
+
+	RAM memory_unit (
+		 .clk(clock),
+		 .reset(clear),
+		 .read(read),
+		 .write(MDRin),
+		 .address(MARreg[8:0]),
+		 .data_in(MDRreg),
+		 .data_out(memory_data_out)
+	);
+
+	wire [31:0] Mdatain_mux;
+	assign Mdatain_mux = read ? memory_data_out : Mdatain;
+
 
   ALU alu(
     .A(Yreg),
@@ -35,7 +50,6 @@ module DataPath(
     .ALU_result(ALU_result)
   );
 
-  // Registers
   zero_register R0 (
     .D(BusMuxOut),
     .clk(clock),
@@ -74,12 +88,12 @@ module DataPath(
   MDR mdr (
     .Q(MDRreg),
     .BusMuxOut(BusMuxOut),
-    .MDatain(Mdatain),
+    .MDatain(Mdatain_mux), 
     .clock(clock),
     .clear(clear),
     .MDRin(MDRin),
     .read(read)
-  );
+);
 
   Bus bus (
     .BusMuxInR0(BusMuxInR0), .BusMuxInR1(BusMuxInR1), .BusMuxInR2(BusMuxInR2), .BusMuxInR3(BusMuxInR3),

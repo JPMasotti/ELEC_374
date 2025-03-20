@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Mon Feb 10 13:55:14 2025
+Analysis & Synthesis Status : Successful - Thu Mar 20 10:36:52 2025
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : ELEC374Phase1
-Top-level Entity Name : div
+Top-level Entity Name : DataPath
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 0
-Total pins : 128
+Total registers : 915
+Total pins : 195
 Total virtual pins : 0
-Total block memory bits : 0
+Total block memory bits : 16,384
 Total DSP Blocks : 0
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0

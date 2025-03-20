@@ -1,0 +1,10 @@
+Warning (10273): Verilog HDL warning at Bus.v(16): extended using "x" or "z" File: C:/Users/jpbru/Documents/GitHub/ELEC_374/Bus.v Line: 16
+Warning (10268): Verilog HDL information at and32_tb.v(61): always construct contains both blocking and non-blocking assignments File: C:/Users/jpbru/Documents/GitHub/ELEC_374/and32_tb.v Line: 61
+Warning (10268): Verilog HDL information at or32_tb.v(61): always construct contains both blocking and non-blocking assignments File: C:/Users/jpbru/Documents/GitHub/ELEC_374/or32_tb.v Line: 61
+Warning (10268): Verilog HDL information at mul64_tb.v(65): always construct contains both blocking and non-blocking assignments File: C:/Users/jpbru/Documents/GitHub/ELEC_374/mul64_tb.v Line: 65
+Warning (10268): Verilog HDL information at add32_tb.v(68): always construct contains both blocking and non-blocking assignments File: C:/Users/jpbru/Documents/GitHub/ELEC_374/add32_tb.v Line: 68
+Warning (10268): Verilog HDL information at sub32_tb.v(68): always construct contains both blocking and non-blocking assignments File: C:/Users/jpbru/Documents/GitHub/ELEC_374/sub32_tb.v Line: 68
+Warning (10268): Verilog HDL information at div32_tb.v(74): always construct contains both blocking and non-blocking assignments File: C:/Users/jpbru/Documents/GitHub/ELEC_374/div32_tb.v Line: 74
+Warning (10268): Verilog HDL information at shr32_tb.v(54): always construct contains both blocking and non-blocking assignments File: C:/Users/jpbru/Documents/GitHub/ELEC_374/shr32_tb.v Line: 54
+Warning (10268): Verilog HDL information at neg32_tb.v(48): always construct contains both blocking and non-blocking assignments File: C:/Users/jpbru/Documents/GitHub/ELEC_374/neg32_tb.v Line: 48
+Warning (10268): Verilog HDL information at not32_tb.v(48): always construct contains both blocking and non-blocking assignments File: C:/Users/jpbru/Documents/GitHub/ELEC_374/not32_tb.v Line: 48

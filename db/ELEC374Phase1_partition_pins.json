@@ -4,515 +4,651 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "quotient[0]",
+					"name" : "PCincremented[0]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[1]",
+					"name" : "PCincremented[1]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[2]",
+					"name" : "PCincremented[2]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[3]",
+					"name" : "PCincremented[3]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[4]",
+					"name" : "PCincremented[4]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[5]",
+					"name" : "PCincremented[5]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[6]",
+					"name" : "PCincremented[6]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[7]",
+					"name" : "PCincremented[7]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[8]",
+					"name" : "PCincremented[8]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[9]",
+					"name" : "PCincremented[9]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[10]",
+					"name" : "PCincremented[10]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[11]",
+					"name" : "PCincremented[11]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[12]",
+					"name" : "PCincremented[12]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[13]",
+					"name" : "PCincremented[13]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[14]",
+					"name" : "PCincremented[14]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[15]",
+					"name" : "PCincremented[15]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[16]",
+					"name" : "PCincremented[16]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[17]",
+					"name" : "PCincremented[17]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[18]",
+					"name" : "PCincremented[18]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[19]",
+					"name" : "PCincremented[19]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[20]",
+					"name" : "PCincremented[20]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[21]",
+					"name" : "PCincremented[21]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[22]",
+					"name" : "PCincremented[22]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[23]",
+					"name" : "PCincremented[23]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[24]",
+					"name" : "PCincremented[24]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[25]",
+					"name" : "PCincremented[25]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[26]",
+					"name" : "PCincremented[26]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[27]",
+					"name" : "PCincremented[27]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[28]",
+					"name" : "PCincremented[28]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[29]",
+					"name" : "PCincremented[29]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[30]",
+					"name" : "PCincremented[30]",
 					"strict" : false
 				},
 				{
-					"name" : "quotient[31]",
+					"name" : "PCincremented[31]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[0]",
+					"name" : "PCreg[0]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[1]",
+					"name" : "PCreg[1]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[2]",
+					"name" : "PCreg[2]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[3]",
+					"name" : "PCreg[3]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[4]",
+					"name" : "PCreg[4]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[5]",
+					"name" : "PCreg[5]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[6]",
+					"name" : "PCreg[6]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[7]",
+					"name" : "PCreg[7]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[8]",
+					"name" : "PCreg[8]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[9]",
+					"name" : "PCreg[9]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[10]",
+					"name" : "PCreg[10]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[11]",
+					"name" : "PCreg[11]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[12]",
+					"name" : "PCreg[12]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[13]",
+					"name" : "PCreg[13]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[14]",
+					"name" : "PCreg[14]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[15]",
+					"name" : "PCreg[15]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[16]",
+					"name" : "PCreg[16]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[17]",
+					"name" : "PCreg[17]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[18]",
+					"name" : "PCreg[18]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[19]",
+					"name" : "PCreg[19]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[20]",
+					"name" : "PCreg[20]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[21]",
+					"name" : "PCreg[21]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[22]",
+					"name" : "PCreg[22]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[23]",
+					"name" : "PCreg[23]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[24]",
+					"name" : "PCreg[24]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[25]",
+					"name" : "PCreg[25]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[26]",
+					"name" : "PCreg[26]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[27]",
+					"name" : "PCreg[27]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[28]",
+					"name" : "PCreg[28]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[29]",
+					"name" : "PCreg[29]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[30]",
+					"name" : "PCreg[30]",
 					"strict" : false
 				},
 				{
-					"name" : "remainder[31]",
+					"name" : "PCreg[31]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[31]",
+					"name" : "BusMuxOut[0]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[30]",
+					"name" : "BusMuxOut[1]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[27]",
+					"name" : "BusMuxOut[2]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[26]",
+					"name" : "BusMuxOut[3]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[28]",
+					"name" : "BusMuxOut[4]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[25]",
+					"name" : "BusMuxOut[5]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[24]",
+					"name" : "BusMuxOut[6]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[23]",
+					"name" : "BusMuxOut[7]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[22]",
+					"name" : "BusMuxOut[8]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[0]",
+					"name" : "BusMuxOut[9]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[13]",
+					"name" : "BusMuxOut[10]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[12]",
+					"name" : "BusMuxOut[11]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[14]",
+					"name" : "BusMuxOut[12]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[11]",
+					"name" : "BusMuxOut[13]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[10]",
+					"name" : "BusMuxOut[14]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[9]",
+					"name" : "BusMuxOut[15]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[8]",
+					"name" : "BusMuxOut[16]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[7]",
+					"name" : "BusMuxOut[17]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[6]",
+					"name" : "BusMuxOut[18]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[5]",
+					"name" : "BusMuxOut[19]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[4]",
+					"name" : "BusMuxOut[20]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[3]",
+					"name" : "BusMuxOut[21]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[2]",
+					"name" : "BusMuxOut[22]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[1]",
+					"name" : "BusMuxOut[23]",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[31]",
+					"name" : "BusMuxOut[24]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[29]",
+					"name" : "BusMuxOut[25]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[20]",
+					"name" : "BusMuxOut[26]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[19]",
+					"name" : "BusMuxOut[27]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[18]",
+					"name" : "BusMuxOut[28]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[17]",
+					"name" : "BusMuxOut[29]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[21]",
+					"name" : "BusMuxOut[30]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[16]",
+					"name" : "BusMuxOut[31]",
 					"strict" : false
 				},
 				{
-					"name" : "divisor[15]",
+					"name" : "IncPC",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[30]",
+					"name" : "clock",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[29]",
+					"name" : "clear",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[28]",
+					"name" : "PCin",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[27]",
+					"name" : "MDRout",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[26]",
+					"name" : "MARout",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[25]",
+					"name" : "Yin",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[24]",
+					"name" : "IRout",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[23]",
+					"name" : "LOout",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[22]",
+					"name" : "HIout",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[21]",
+					"name" : "R15out",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[20]",
+					"name" : "R14out",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[19]",
+					"name" : "R13out",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[18]",
+					"name" : "R12out",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[17]",
+					"name" : "R11out",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[16]",
+					"name" : "R10out",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[15]",
+					"name" : "R9out",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[14]",
+					"name" : "R8out",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[13]",
+					"name" : "R7out",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[12]",
+					"name" : "R6out",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[11]",
+					"name" : "R5out",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[10]",
+					"name" : "R4out",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[9]",
+					"name" : "R3out",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[8]",
+					"name" : "R2out",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[7]",
+					"name" : "R0out",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[6]",
+					"name" : "R1out",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[5]",
+					"name" : "RZout",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[4]",
+					"name" : "Zhighout",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[3]",
+					"name" : "Zlowout",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[2]",
+					"name" : "BAout",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[1]",
+					"name" : "read",
 					"strict" : false
 				},
 				{
-					"name" : "dividend[0]",
+					"name" : "MDRin",
+					"strict" : false
+				},
+				{
+					"name" : "LOin",
+					"strict" : false
+				},
+				{
+					"name" : "R12in",
+					"strict" : false
+				},
+				{
+					"name" : "R5in",
+					"strict" : false
+				},
+				{
+					"name" : "R4in",
+					"strict" : false
+				},
+				{
+					"name" : "R8in",
+					"strict" : false
+				},
+				{
+					"name" : "R3in",
+					"strict" : false
+				},
+				{
+					"name" : "R2in",
+					"strict" : false
+				},
+				{
+					"name" : "HIin",
+					"strict" : false
+				},
+				{
+					"name" : "R13in",
+					"strict" : false
+				},
+				{
+					"name" : "R10in",
+					"strict" : false
+				},
+				{
+					"name" : "R6in",
+					"strict" : false
+				},
+				{
+					"name" : "R11in",
+					"strict" : false
+				},
+				{
+					"name" : "R9in",
+					"strict" : false
+				},
+				{
+					"name" : "R7in",
+					"strict" : false
+				},
+				{
+					"name" : "R1in",
+					"strict" : false
+				},
+				{
+					"name" : "R0in",
+					"strict" : false
+				},
+				{
+					"name" : "MARin",
+					"strict" : false
+				},
+				{
+					"name" : "IRin",
+					"strict" : false
+				},
+				{
+					"name" : "R15in",
+					"strict" : false
+				},
+				{
+					"name" : "ALU_control[1]",
+					"strict" : false
+				},
+				{
+					"name" : "ALU_control[0]",
+					"strict" : false
+				},
+				{
+					"name" : "shift_count_in[0]",
+					"strict" : false
+				},
+				{
+					"name" : "shift_count_in[1]",
+					"strict" : false
+				},
+				{
+					"name" : "shift_count_in[2]",
+					"strict" : false
+				},
+				{
+					"name" : "shift_count_in[3]",
+					"strict" : false
+				},
+				{
+					"name" : "shift_count_in[4]",
+					"strict" : false
+				},
+				{
+					"name" : "ALU_control[2]",
+					"strict" : false
+				},
+				{
+					"name" : "ALU_control[3]",
+					"strict" : false
+				},
+				{
+					"name" : "ALU_control[4]",
+					"strict" : false
+				},
+				{
+					"name" : "ALU_control[5]",
+					"strict" : false
+				},
+				{
+					"name" : "ALU_control[6]",
+					"strict" : false
+				},
+				{
+					"name" : "ALU_control[7]",
+					"strict" : false
+				},
+				{
+					"name" : "Zin",
+					"strict" : false
+				},
+				{
+					"name" : "R14in",
 					"strict" : false
 				}
 			]

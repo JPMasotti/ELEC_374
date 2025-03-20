@@ -1,0 +1,54 @@
+`timescale 1ns / 1ps
+
+module ram_tb;
+    reg clk, reset, read, write;
+    reg [8:0] address;
+    reg [31:0] data_in;
+    wire [31:0] data_out;
+
+    // Instantiate the RAM module
+    ram uut (
+        .clk(clk),
+        .reset(reset),
+        .read(read),
+        .write(write),
+        .address(address),
+        .data_in(data_in),
+        .data_out(data_out)
+    );
+
+    // Clock Generation
+    always #5 clk = ~clk; // 10ns clock period
+
+    initial begin
+        // Initialize Signals
+        clk = 0;
+        reset = 1;
+        read = 0;
+        write = 0;
+        address = 9'b0;
+        data_in = 32'b0;
+
+        // Reset the RAM
+        #10 reset = 0; // Deassert reset
+
+        // Write Data to RAM
+        #10 address = 9'd10; data_in = 32'hA5A5A5A5; write = 1;
+        #10 write = 0; // Disable write
+
+        // Read Data from RAM
+        #10 read = 1;
+        #10 read = 0; // Disable read
+
+        // Write Another Value
+        #10 address = 9'd20; data_in = 32'h5A5A5A5A; write = 1;
+        #10 write = 0;
+
+        // Read the New Value
+        #10 read = 1;
+        #10 read = 0;
+
+        // End Simulation
+        #50 $stop;
+    end
+endmodule
