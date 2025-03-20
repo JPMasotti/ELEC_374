@@ -12,239 +12,239 @@
 # 
 # vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/registerclass.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:51:56 on Mar 20,2025
+# Start time: 11:40:56 on Mar 20,2025
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374" C:/Users/jpbru/Documents/GitHub/ELEC_374/registerclass.v 
 # -- Compiling module register
 # 
 # Top level modules:
 # 	register
-# End time: 10:51:56 on Mar 20,2025, Elapsed time: 0:00:00
+# End time: 11:40:56 on Mar 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/DataPath.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:51:56 on Mar 20,2025
+# Start time: 11:40:56 on Mar 20,2025
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374" C:/Users/jpbru/Documents/GitHub/ELEC_374/DataPath.v 
 # -- Compiling module DataPath
 # 
 # Top level modules:
 # 	DataPath
-# End time: 10:51:56 on Mar 20,2025, Elapsed time: 0:00:00
+# End time: 11:40:56 on Mar 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/Bus.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:51:56 on Mar 20,2025
+# Start time: 11:40:56 on Mar 20,2025
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374" C:/Users/jpbru/Documents/GitHub/ELEC_374/Bus.v 
 # -- Compiling module Bus
 # 
 # Top level modules:
 # 	Bus
-# End time: 10:51:56 on Mar 20,2025, Elapsed time: 0:00:00
+# End time: 11:40:56 on Mar 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/MDR.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:51:56 on Mar 20,2025
+# Start time: 11:40:56 on Mar 20,2025
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374" C:/Users/jpbru/Documents/GitHub/ELEC_374/MDR.v 
 # -- Compiling module MDR
 # 
 # Top level modules:
 # 	MDR
-# End time: 10:51:56 on Mar 20,2025, Elapsed time: 0:00:00
+# End time: 11:40:56 on Mar 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/and32.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:51:56 on Mar 20,2025
+# Start time: 11:40:56 on Mar 20,2025
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374" C:/Users/jpbru/Documents/GitHub/ELEC_374/and32.v 
 # -- Compiling module and32
 # 
 # Top level modules:
 # 	and32
-# End time: 10:51:57 on Mar 20,2025, Elapsed time: 0:00:01
+# End time: 11:40:56 on Mar 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/ALU.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:51:57 on Mar 20,2025
+# Start time: 11:40:56 on Mar 20,2025
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374" C:/Users/jpbru/Documents/GitHub/ELEC_374/ALU.v 
 # -- Compiling module ALU
 # 
 # Top level modules:
 # 	ALU
-# End time: 10:51:57 on Mar 20,2025, Elapsed time: 0:00:00
+# End time: 11:40:56 on Mar 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/add32.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:51:57 on Mar 20,2025
+# Start time: 11:40:56 on Mar 20,2025
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374" C:/Users/jpbru/Documents/GitHub/ELEC_374/add32.v 
 # -- Compiling module add32
 # 
 # Top level modules:
 # 	add32
-# End time: 10:51:57 on Mar 20,2025, Elapsed time: 0:00:00
+# End time: 11:40:57 on Mar 20,2025, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/div32.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:51:57 on Mar 20,2025
+# Start time: 11:40:57 on Mar 20,2025
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374" C:/Users/jpbru/Documents/GitHub/ELEC_374/div32.v 
 # -- Compiling module div32
 # 
 # Top level modules:
 # 	div32
-# End time: 10:51:57 on Mar 20,2025, Elapsed time: 0:00:00
+# End time: 11:40:57 on Mar 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:51:57 on Mar 20,2025
+# Start time: 11:40:57 on Mar 20,2025
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374" C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul.v 
 # -- Compiling module booth_pair_mul
 # 
 # Top level modules:
 # 	booth_pair_mul
-# End time: 10:51:57 on Mar 20,2025, Elapsed time: 0:00:00
+# End time: 11:40:57 on Mar 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/neg32.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:51:57 on Mar 20,2025
+# Start time: 11:40:57 on Mar 20,2025
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374" C:/Users/jpbru/Documents/GitHub/ELEC_374/neg32.v 
 # -- Compiling module neg32
 # 
 # Top level modules:
 # 	neg32
-# End time: 10:51:57 on Mar 20,2025, Elapsed time: 0:00:00
+# End time: 11:40:57 on Mar 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/not32.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:51:57 on Mar 20,2025
+# Start time: 11:40:57 on Mar 20,2025
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374" C:/Users/jpbru/Documents/GitHub/ELEC_374/not32.v 
 # -- Compiling module not32
 # 
 # Top level modules:
 # 	not32
-# End time: 10:51:57 on Mar 20,2025, Elapsed time: 0:00:00
+# End time: 11:40:57 on Mar 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/or32.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:51:57 on Mar 20,2025
+# Start time: 11:40:57 on Mar 20,2025
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374" C:/Users/jpbru/Documents/GitHub/ELEC_374/or32.v 
 # -- Compiling module or32
 # 
 # Top level modules:
 # 	or32
-# End time: 10:51:57 on Mar 20,2025, Elapsed time: 0:00:00
+# End time: 11:40:57 on Mar 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/ror32.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:51:57 on Mar 20,2025
+# Start time: 11:40:57 on Mar 20,2025
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374" C:/Users/jpbru/Documents/GitHub/ELEC_374/ror32.v 
 # -- Compiling module ror32
 # 
 # Top level modules:
 # 	ror32
-# End time: 10:51:57 on Mar 20,2025, Elapsed time: 0:00:00
+# End time: 11:40:57 on Mar 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/rol32.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:51:57 on Mar 20,2025
+# Start time: 11:40:57 on Mar 20,2025
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374" C:/Users/jpbru/Documents/GitHub/ELEC_374/rol32.v 
 # -- Compiling module rol32
 # 
 # Top level modules:
 # 	rol32
-# End time: 10:51:57 on Mar 20,2025, Elapsed time: 0:00:00
+# End time: 11:40:57 on Mar 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/shl32.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:51:57 on Mar 20,2025
+# Start time: 11:40:57 on Mar 20,2025
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374" C:/Users/jpbru/Documents/GitHub/ELEC_374/shl32.v 
 # -- Compiling module shl32
 # 
 # Top level modules:
 # 	shl32
-# End time: 10:51:57 on Mar 20,2025, Elapsed time: 0:00:00
+# End time: 11:40:57 on Mar 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/shr32.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:51:57 on Mar 20,2025
+# Start time: 11:40:57 on Mar 20,2025
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374" C:/Users/jpbru/Documents/GitHub/ELEC_374/shr32.v 
 # -- Compiling module shr32
 # 
 # Top level modules:
 # 	shr32
-# End time: 10:51:58 on Mar 20,2025, Elapsed time: 0:00:01
+# End time: 11:40:57 on Mar 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/shra32.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:51:58 on Mar 20,2025
+# Start time: 11:40:57 on Mar 20,2025
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374" C:/Users/jpbru/Documents/GitHub/ELEC_374/shra32.v 
 # -- Compiling module shra32
 # 
 # Top level modules:
 # 	shra32
-# End time: 10:51:58 on Mar 20,2025, Elapsed time: 0:00:00
+# End time: 11:40:57 on Mar 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/sub32.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:51:58 on Mar 20,2025
+# Start time: 11:40:57 on Mar 20,2025
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374" C:/Users/jpbru/Documents/GitHub/ELEC_374/sub32.v 
 # -- Compiling module sub32
 # 
 # Top level modules:
 # 	sub32
-# End time: 10:51:58 on Mar 20,2025, Elapsed time: 0:00:00
+# End time: 11:40:58 on Mar 20,2025, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/PCincrementer.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:51:58 on Mar 20,2025
+# Start time: 11:40:58 on Mar 20,2025
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374" C:/Users/jpbru/Documents/GitHub/ELEC_374/PCincrementer.v 
 # -- Compiling module PCincrementer
 # 
 # Top level modules:
 # 	PCincrementer
-# End time: 10:51:58 on Mar 20,2025, Elapsed time: 0:00:00
+# End time: 11:40:58 on Mar 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/zero_register.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:51:58 on Mar 20,2025
+# Start time: 11:40:58 on Mar 20,2025
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374" C:/Users/jpbru/Documents/GitHub/ELEC_374/zero_register.v 
 # -- Compiling module zero_register
 # 
 # Top level modules:
 # 	zero_register
-# End time: 10:51:58 on Mar 20,2025, Elapsed time: 0:00:00
+# End time: 11:40:58 on Mar 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/RAM.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:51:58 on Mar 20,2025
+# Start time: 11:40:58 on Mar 20,2025
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374" C:/Users/jpbru/Documents/GitHub/ELEC_374/RAM.v 
 # -- Compiling module RAM
 # 
 # Top level modules:
 # 	RAM
-# End time: 10:51:58 on Mar 20,2025, Elapsed time: 0:00:00
+# End time: 11:40:58 on Mar 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/adder.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:51:58 on Mar 20,2025
+# Start time: 11:40:58 on Mar 20,2025
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374" C:/Users/jpbru/Documents/GitHub/ELEC_374/adder.v 
 # -- Compiling module adder
 # 
 # Top level modules:
 # 	adder
-# End time: 10:51:58 on Mar 20,2025, Elapsed time: 0:00:00
+# End time: 11:40:58 on Mar 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vlog -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374 {C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:51:58 on Mar 20,2025
+# Start time: 11:40:58 on Mar 20,2025
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374" C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v 
 # -- Compiling module ld_tb
 # 
 # Top level modules:
 # 	ld_tb
-# End time: 10:51:58 on Mar 20,2025, Elapsed time: 0:00:00
+# End time: 11:40:58 on Mar 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  ld_tb
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs=""+acc"" ld_tb 
-# Start time: 10:51:58 on Mar 20,2025
+# Start time: 11:40:58 on Mar 20,2025
 # Loading work.ld_tb
 # Loading work.DataPath
 # Loading work.RAM
@@ -268,49 +268,6 @@
 # Loading work.adder
 # Loading work.MDR
 # Loading work.Bus
-# ** Warning: (vsim-3017) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Too few port connections. Expected 60, found 22.
-#    Time: 0 ps  Iteration: 0  Instance: /ld_tb/uut File: C:/Users/jpbru/Documents/GitHub/ELEC_374/DataPath.v
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R1out'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R2out'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R3out'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R4out'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R5out'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R6out'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R7out'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R8out'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R9out'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R10out'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R11out'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R12out'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R13out'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R14out'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R15out'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R1in'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R2in'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R3in'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R4in'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R5in'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R6in'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R7in'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R8in'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R9in'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R10in'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R11in'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R12in'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R13in'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R14in'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'R15in'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'HIin'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'HIout'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'LOin'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'LOout'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'MARout'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'IRout'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'RZout'.
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(14): [TFMPC] - Missing connection for port 'Zhighout'.
-# ** Warning: (vsim-3017) C:/Users/jpbru/Documents/GitHub/ELEC_374/DataPath.v(98): [TFMPC] - Too few port connections. Expected 50, found 49.
-#    Time: 0 ps  Iteration: 0  Instance: /ld_tb/uut/bus File: C:/Users/jpbru/Documents/GitHub/ELEC_374/Bus.v
-# ** Warning: (vsim-3722) C:/Users/jpbru/Documents/GitHub/ELEC_374/DataPath.v(98): [TFMPC] - Missing connection for port 'BusMuxInPC'.
 # 
 # add wave *
 # view structure
@@ -318,23 +275,36 @@
 # view signals
 # .main_pane.objects.interior.cs.body.tree
 # run -all
-# Time=0 | PC=00000000 | MAR=00000000 | MDR=xxxxxxxx | R0=00000000 | Bus=zzzzzzzz
-# Time=10000 | PC=00000000 | MAR=00000000 | MDR=00000000 | R0=00000000 | Bus=zzzzzzzz
-# Time=50000 | PC=00000001 | MAR=zzzzzzzz | MDR=00000000 | R0=00000000 | Bus=zzzzzzzz
-# Time=80000 | PC=00000001 | MAR=zzzzzzzz | MDR=00000000 | R0=00000000 | Bus=00000001
-# Time=100000 | PC=00000001 | MAR=zzzzzzzz | MDR=00000000 | R0=00000000 | Bus=zzzzzzzz
-# Time=120000 | PC=00000001 | MAR=zzzzzzzz | MDR=00000000 | R0=00000000 | Bus=00000000
-# Time=140000 | PC=00000001 | MAR=zzzzzzzz | MDR=00000000 | R0=00000000 | Bus=zzzzzzzz
-# Time=160000 | PC=00000001 | MAR=zzzzzzzz | MDR=00000000 | R0=00000000 | Bus=00000000
-# Time=180000 | PC=00000001 | MAR=zzzzzzzz | MDR=00000000 | R0=00000000 | Bus=zzzzzzzz
-# Time=240000 | PC=00000001 | MAR=zzzzzzzz | MDR=00000000 | R0=00000000 | Bus=xxxxxxxx
-# Time=250000 | PC=00000001 | MAR=xxxxxxxx | MDR=00000000 | R0=00000000 | Bus=xxxxxxxx
-# Time=260000 | PC=00000001 | MAR=xxxxxxxx | MDR=00000000 | R0=00000000 | Bus=zzzzzzzz
-# Time=290000 | PC=00000001 | MAR=xxxxxxxx | MDR=xxxxxxxx | R0=00000000 | Bus=zzzzzzzz
-# Time=320000 | PC=00000001 | MAR=xxxxxxxx | MDR=xxxxxxxx | R0=00000000 | Bus=xxxxxxxx
-# Time=330000 | PC=00000001 | MAR=xxxxxxxx | MDR=xxxxxxxx | R0=xxxxxxxx | Bus=xxxxxxxx
-# Time=340000 | PC=00000001 | MAR=xxxxxxxx | MDR=xxxxxxxx | R0=xxxxxxxx | Bus=zzzzzzzz
-# ** Note: $finish    : C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(77)
-#    Time: 440 ns  Iteration: 0  Instance: /ld_tb
-# End time: 10:52:05 on Mar 20,2025, Elapsed time: 0:00:07
-# Errors: 0, Warnings: 41
+# T0: PC -> MAR
+# T1: Read instruction from memory into MDR
+# T2: MDR -> IR, increment PC
+# T3: R2 -> Y
+# T4: Y + 0 -> Z
+# T5: Z -> MAR
+# T6: Read data from memory into MDR
+# T7: MDR -> R1
+# R1 =          z (Expected: 15)
+# ** Note: $finish    : C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(141)
+#    Time: 340 ns  Iteration: 0  Instance: /ld_tb
+# 1
+# Break in Module ld_tb at C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v line 141
+restart
+run 500ns
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# T0: PC -> MAR
+# T1: Read instruction from memory into MDR
+# T2: MDR -> IR, increment PC
+# T3: R2 -> Y
+# T4: Y + 0 -> Z
+# T5: Z -> MAR
+# T6: Read data from memory into MDR
+# T7: MDR -> R1
+# R1 =          z (Expected: 15)
+# ** Note: $finish    : C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v(141)
+#    Time: 340 ns  Iteration: 0  Instance: /ld_tb
+# 1
+# Break in Module ld_tb at C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v line 141
+# End time: 11:42:56 on Mar 20,2025, Elapsed time: 0:01:58
+# Errors: 0, Warnings: 0

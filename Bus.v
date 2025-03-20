@@ -3,7 +3,7 @@ module Bus (
     input wire [31:0] BusMuxInR4, BusMuxInR5, BusMuxInR6, BusMuxInR7,
     input wire [31:0] BusMuxInR8, BusMuxInR9, BusMuxInR10, BusMuxInR11,
     input wire [31:0] BusMuxInR12, BusMuxInR13, BusMuxInR14, BusMuxInR15,
-    input wire [31:0] HIreg, LOreg, BusMuxInPC, BusMuxInIR,
+    input wire [31:0] HIreg, LOreg, BusMuxInIR,
     input wire [31:0] BusMuxInMAR, BusMuxInMDR, Yreg,
     input wire [63:0] Zreg,
     input wire R0out, R1out, R2out, R3out, R4out, R5out, R6out, R7out,

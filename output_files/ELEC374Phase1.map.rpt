@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ELEC374Phase1
-Thu Mar 20 10:36:52 2025
+Thu Mar 20 11:40:40 2025
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -43,12 +43,11 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
  35. Parameter Settings for User Entity Instance: register:PC
  36. Parameter Settings for Inferred Entity Instance: RAM:memory_unit|altsyncram:memory_rtl_0
  37. altsyncram Parameter Settings by Entity Instance
- 38. Port Connectivity Checks: "Bus:bus"
- 39. Port Connectivity Checks: "PCincrementer:pcInc|adder:add1"
- 40. Post-Synthesis Netlist Statistics for Top Partition
- 41. Elapsed Time Per Partition
- 42. Analysis & Synthesis Messages
- 43. Analysis & Synthesis Suppressed Messages
+ 38. Port Connectivity Checks: "PCincrementer:pcInc|adder:add1"
+ 39. Post-Synthesis Netlist Statistics for Top Partition
+ 40. Elapsed Time Per Partition
+ 41. Analysis & Synthesis Messages
+ 42. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -74,7 +73,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu Mar 20 10:36:52 2025       ;
+; Analysis & Synthesis Status     ; Successful - Thu Mar 20 11:40:40 2025       ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                   ; ELEC374Phase1                               ;
 ; Top-level Entity Name           ; DataPath                                    ;
@@ -198,7 +197,10 @@ refer to the applicable agreement for further details.
 ;     Processor 3            ;   0.0%      ;
 ;     Processor 4            ;   0.0%      ;
 ;     Processor 5            ;   0.0%      ;
-;     Processors 6-12        ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
+;     Processor 7            ;   0.0%      ;
+;     Processor 8            ;   0.0%      ;
+;     Processors 9-12        ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -914,15 +916,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------------------+-----------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Bus:bus"                                                                                                                                          ;
-+------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; Port       ; Type  ; Severity ; Details                                                                                                                                      ;
-+------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; BusMuxInPC ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
-+------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-
-
 +------------------------------------------------------------+
 ; Port Connectivity Checks: "PCincrementer:pcInc|adder:add1" ;
 +----------+-------+----------+------------------------------+
@@ -973,7 +966,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:49     ;
+; Top            ; 00:00:50     ;
 +----------------+--------------+
 
 
@@ -983,7 +976,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Thu Mar 20 10:35:47 2025
+    Info: Processing started: Thu Mar 20 11:39:34 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ELEC374Phase1 -c ELEC374Phase1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
@@ -1123,7 +1116,6 @@ Info (12133): Instantiated megafunction "RAM:memory_unit|altsyncram:memory_rtl_0
     Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_rfr1.tdf
     Info (12023): Found entity 1: altsyncram_rfr1 File: C:/Users/jpbru/Documents/GitHub/ELEC_374/db/altsyncram_rfr1.tdf Line: 27
-Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
     Warning (13047): Converted the fan-out from the tri-state buffer "Bus:bus|BusMuxOut[0]" to the node "ALU:alu|or32:or_gate|result[0]" into an OR gate File: C:/Users/jpbru/Documents/GitHub/ELEC_374/Bus.v Line: 13
     Warning (13047): Converted the fan-out from the tri-state buffer "Bus:bus|BusMuxOut[1]" to the node "ALU:alu|add32:adder|LocalCarry" into an OR gate File: C:/Users/jpbru/Documents/GitHub/ELEC_374/Bus.v Line: 13
@@ -1200,11 +1192,11 @@ Info (21057): Implemented 9689 device resources after synthesis - the final reso
     Info (21059): Implemented 96 output pins
     Info (21061): Implemented 9462 logic cells
     Info (21064): Implemented 32 RAM segments
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 77 warnings
-    Info: Peak virtual memory: 4954 megabytes
-    Info: Processing ended: Thu Mar 20 10:36:52 2025
-    Info: Elapsed time: 00:01:05
-    Info: Total CPU time (on all processors): 00:00:42
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 76 warnings
+    Info: Peak virtual memory: 4947 megabytes
+    Info: Processing ended: Thu Mar 20 11:40:40 2025
+    Info: Elapsed time: 00:01:06
+    Info: Total CPU time (on all processors): 00:00:44
 
 
 +------------------------------------------+

@@ -9,7 +9,7 @@ z2
 cModel Technology
 Z0 dC:/Users/jpbru/Documents/GitHub/ELEC_374/simulation/modelsim
 vadd32
-Z1 !s110 1742482317
+Z1 !s110 1742485257
 !i10b 1
 !s100 JH5EP=VnMB[TL2LR1;G<81
 IbmB=:k1S5nl2>5MUiikQ^3
@@ -23,7 +23,7 @@ Z4 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z5 !s108 1742482317.000000
+Z5 !s108 1742485256.000000
 !s107 C:/Users/jpbru/Documents/GitHub/ELEC_374/add32.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374|C:/Users/jpbru/Documents/GitHub/ELEC_374/add32.v|
 !i113 1
@@ -31,7 +31,7 @@ Z6 o-vlog01compat -work work
 Z7 !s92 -vlog01compat -work work +incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374
 Z8 tCvgOpt 0
 vadder
-Z9 !s110 1742482318
+Z9 !s110 1742485258
 !i10b 1
 !s100 Vhf^j=4hGZCC<B`eZPk9M0
 Ib]mg^aNhIe@fTnVh=KD1]2
@@ -45,7 +45,7 @@ R4
 r1
 !s85 0
 31
-Z10 !s108 1742482318.000000
+Z10 !s108 1742485258.000000
 !s107 C:/Users/jpbru/Documents/GitHub/ELEC_374/adder.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374|C:/Users/jpbru/Documents/GitHub/ELEC_374/adder.v|
 !i113 1
@@ -53,13 +53,13 @@ R6
 R7
 R8
 vALU
-R1
+Z11 !s110 1742485256
 !i10b 1
 !s100 ElW2jo>?QI291@8HP^ozJ0
 IG2cz27HA7zNNA:WdWVUn;2
 R2
 R0
-R3
+Z12 w1742482584
 8C:/Users/jpbru/Documents/GitHub/ELEC_374/ALU.v
 FC:/Users/jpbru/Documents/GitHub/ELEC_374/ALU.v
 L0 1
@@ -76,7 +76,7 @@ R7
 R8
 n@a@l@u
 vand32
-R1
+R11
 !i10b 1
 !s100 be<OOI4@;CGR2gaGTM;EP2
 IBB>hO0KgnFk3jj0660J;H2
@@ -90,7 +90,7 @@ R4
 r1
 !s85 0
 31
-Z11 !s108 1742482316.000000
+R5
 !s107 C:/Users/jpbru/Documents/GitHub/ELEC_374/and32.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374|C:/Users/jpbru/Documents/GitHub/ELEC_374/and32.v|
 !i113 1
@@ -112,7 +112,7 @@ R4
 r1
 !s85 0
 31
-R5
+Z13 !s108 1742485257.000000
 !s107 C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374|C:/Users/jpbru/Documents/GitHub/ELEC_374/booth_pair_mul.v|
 !i113 1
@@ -120,13 +120,13 @@ R6
 R7
 R8
 vBus
-Z12 !s110 1742482316
+R11
 !i10b 1
-!s100 cGRm:dj_1VDJRcQHQOX7A0
-IeI3>9WJ6zD1TnRZncUik=0
+!s100 hcXSO7chA6b?VfeD4I>z42
+IozjTdj]NG1NQPCXG@d3@k2
 R2
 R0
-R3
+w1742483943
 8C:/Users/jpbru/Documents/GitHub/ELEC_374/Bus.v
 FC:/Users/jpbru/Documents/GitHub/ELEC_374/Bus.v
 L0 1
@@ -134,7 +134,7 @@ R4
 r1
 !s85 0
 31
-R11
+R5
 !s107 C:/Users/jpbru/Documents/GitHub/ELEC_374/Bus.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374|C:/Users/jpbru/Documents/GitHub/ELEC_374/Bus.v|
 !i113 1
@@ -143,13 +143,13 @@ R7
 R8
 n@bus
 vDataPath
-R12
+R11
 !i10b 1
 !s100 H70kC70_]5g]gU4ZkE5d>1
 I3_HP2<3G0PBQTYU@e4;>n3
 R2
 R0
-w1742478246
+Z14 w1742482589
 8C:/Users/jpbru/Documents/GitHub/ELEC_374/DataPath.v
 FC:/Users/jpbru/Documents/GitHub/ELEC_374/DataPath.v
 L0 1
@@ -157,7 +157,7 @@ R4
 r1
 !s85 0
 31
-R11
+R5
 !s107 C:/Users/jpbru/Documents/GitHub/ELEC_374/DataPath.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374|C:/Users/jpbru/Documents/GitHub/ELEC_374/DataPath.v|
 !i113 1
@@ -180,7 +180,7 @@ R4
 r1
 !s85 0
 31
-R5
+R13
 !s107 C:/Users/jpbru/Documents/GitHub/ELEC_374/div32.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374|C:/Users/jpbru/Documents/GitHub/ELEC_374/div32.v|
 !i113 1
@@ -190,11 +190,11 @@ R8
 vld_tb
 R9
 !i10b 1
-!s100 @CBA6ioBKJKgaXQNha@e02
-I]m660oKf8AFUZgI?>XdcV0
+!s100 JN1T=24[jV;i4Bi6nEmjR2
+I1=^3E1H3Zk:61Hc^2Da<K0
 R2
 R0
-w1742481340
+w1742485172
 8C:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v
 FC:/Users/jpbru/Documents/GitHub/ELEC_374/ld_tb.v
 L0 3
@@ -210,13 +210,13 @@ R6
 R7
 R8
 vMDR
-R12
+R11
 !i10b 1
 !s100 j^R=?O;bOSf>1Kai5jUP[1
 I_Tb^^6mZNWogZ8Rm8`c^83
 R2
 R0
-R3
+R12
 8C:/Users/jpbru/Documents/GitHub/ELEC_374/MDR.v
 FC:/Users/jpbru/Documents/GitHub/ELEC_374/MDR.v
 L0 1
@@ -224,7 +224,7 @@ R4
 r1
 !s85 0
 31
-R11
+R5
 !s107 C:/Users/jpbru/Documents/GitHub/ELEC_374/MDR.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374|C:/Users/jpbru/Documents/GitHub/ELEC_374/MDR.v|
 !i113 1
@@ -247,7 +247,7 @@ R4
 r1
 !s85 0
 31
-R5
+R13
 !s107 C:/Users/jpbru/Documents/GitHub/ELEC_374/neg32.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374|C:/Users/jpbru/Documents/GitHub/ELEC_374/neg32.v|
 !i113 1
@@ -269,7 +269,7 @@ R4
 r1
 !s85 0
 31
-R5
+R13
 !s107 C:/Users/jpbru/Documents/GitHub/ELEC_374/not32.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374|C:/Users/jpbru/Documents/GitHub/ELEC_374/not32.v|
 !i113 1
@@ -291,7 +291,7 @@ R4
 r1
 !s85 0
 31
-R5
+R13
 !s107 C:/Users/jpbru/Documents/GitHub/ELEC_374/or32.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374|C:/Users/jpbru/Documents/GitHub/ELEC_374/or32.v|
 !i113 1
@@ -328,7 +328,7 @@ R9
 IDADLhGd=J:cT=CT?XZPP50
 R2
 R0
-w1742228669
+R14
 8C:/Users/jpbru/Documents/GitHub/ELEC_374/RAM.v
 FC:/Users/jpbru/Documents/GitHub/ELEC_374/RAM.v
 L0 1
@@ -345,7 +345,7 @@ R7
 R8
 n@r@a@m
 vregister
-R12
+R11
 !i10b 1
 !s100 Dmdb<a[kLzA][[ehOiE=S1
 IY5D`;Sdc;[0^OBiJW2clc2
@@ -359,7 +359,7 @@ R4
 r1
 !s85 0
 31
-R11
+R5
 !s107 C:/Users/jpbru/Documents/GitHub/ELEC_374/registerclass.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374|C:/Users/jpbru/Documents/GitHub/ELEC_374/registerclass.v|
 !i113 1
@@ -381,7 +381,7 @@ R4
 r1
 !s85 0
 31
-R5
+R13
 !s107 C:/Users/jpbru/Documents/GitHub/ELEC_374/rol32.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374|C:/Users/jpbru/Documents/GitHub/ELEC_374/rol32.v|
 !i113 1
@@ -403,7 +403,7 @@ R4
 r1
 !s85 0
 31
-R5
+R13
 !s107 C:/Users/jpbru/Documents/GitHub/ELEC_374/ror32.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374|C:/Users/jpbru/Documents/GitHub/ELEC_374/ror32.v|
 !i113 1
@@ -425,7 +425,7 @@ R4
 r1
 !s85 0
 31
-R5
+R13
 !s107 C:/Users/jpbru/Documents/GitHub/ELEC_374/shl32.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374|C:/Users/jpbru/Documents/GitHub/ELEC_374/shl32.v|
 !i113 1
@@ -433,13 +433,13 @@ R6
 R7
 R8
 vshr32
-R9
+R1
 !i10b 1
 !s100 5?i2RS5We>U5]_LbemTHo1
 IHzH>?cZUfCToe8Y<lG9>E0
 R2
 R0
-Z13 w1740622937
+Z15 w1740622937
 8C:/Users/jpbru/Documents/GitHub/ELEC_374/shr32.v
 FC:/Users/jpbru/Documents/GitHub/ELEC_374/shr32.v
 L0 1
@@ -447,7 +447,7 @@ R4
 r1
 !s85 0
 31
-R5
+R13
 !s107 C:/Users/jpbru/Documents/GitHub/ELEC_374/shr32.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374|C:/Users/jpbru/Documents/GitHub/ELEC_374/shr32.v|
 !i113 1
@@ -455,13 +455,13 @@ R6
 R7
 R8
 vshra32
-R9
+R1
 !i10b 1
 !s100 fT`l<B9DW_b0ke`OQTJRk3
 IW1KQl]hPP2HOoK_F>iojU3
 R2
 R0
-R13
+R12
 8C:/Users/jpbru/Documents/GitHub/ELEC_374/shra32.v
 FC:/Users/jpbru/Documents/GitHub/ELEC_374/shra32.v
 L0 1
@@ -469,7 +469,7 @@ R4
 r1
 !s85 0
 31
-R10
+R13
 !s107 C:/Users/jpbru/Documents/GitHub/ELEC_374/shra32.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374|C:/Users/jpbru/Documents/GitHub/ELEC_374/shra32.v|
 !i113 1
@@ -483,7 +483,7 @@ R9
 Iob;6K]HI?e@55l9MlH@j^1
 R2
 R0
-R13
+R15
 8C:/Users/jpbru/Documents/GitHub/ELEC_374/sub32.v
 FC:/Users/jpbru/Documents/GitHub/ELEC_374/sub32.v
 L0 1
@@ -491,7 +491,7 @@ R4
 r1
 !s85 0
 31
-R10
+R13
 !s107 C:/Users/jpbru/Documents/GitHub/ELEC_374/sub32.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jpbru/Documents/GitHub/ELEC_374|C:/Users/jpbru/Documents/GitHub/ELEC_374/sub32.v|
 !i113 1
@@ -505,7 +505,7 @@ R9
 IA=FN379ognl?a8jAd1dB72
 R2
 R0
-w1742227448
+R14
 8C:/Users/jpbru/Documents/GitHub/ELEC_374/zero_register.v
 FC:/Users/jpbru/Documents/GitHub/ELEC_374/zero_register.v
 L0 1
