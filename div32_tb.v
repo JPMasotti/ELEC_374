@@ -109,62 +109,41 @@ module div32_tb;
             end
             
             T0: begin
-                MDRout_tb <= 0; 
-                R6in_tb <= 0;
-                PCout_tb <= 1; 
-                MARin_tb <= 1; 
-                IncPC_tb <= 1; 
-                Zin_tb <= 1;
+                MDRout_tb <= 0; R6in_tb <= 0; PCout_tb <= 1; 
+                MARin_tb <= 1; IncPC_tb <= 1; Zin_tb <= 1;
             end
-            
             T1: begin
-                PCout_tb <= 0; 
-                MARin_tb <= 0; 
-                IncPC_tb <= 0;
-                Zlowout_tb <= 1; 
-                PCin_tb <= 1; 
-                read_tb <= 1; 
-                MDRin_tb <= 1;
+                PCout_tb <= 0; MARin_tb <= 0; IncPC_tb <= 0;
+                Zlowout_tb <= 1; PCin_tb <= 1; 
+                read_tb <= 1; MDRin_tb <= 1;
                 Mdatain_tb <= 32'd9898;  
             end
-            
             T2: begin
-                PCout_tb <= 0; 
-                MARin_tb <= 0; 
-                IncPC_tb <= 0; 
+                PCout_tb <= 0; MARin_tb <= 0; IncPC_tb <= 0; 
                 Zin_tb <= 0;
-                MDRout_tb <= 1; 
-                IRin_tb <= 1;
+                MDRout_tb <= 1; IRin_tb <= 1;
             end
             
             T3: begin
-                MDRout_tb <= 0; 
-                IRin_tb <= 0;
-                R2out_tb <= 1; 
-                Yin_tb <= 1;
+                MDRout_tb <= 0; IRin_tb <= 0;
+                R2out_tb <= 1; Yin_tb <= 1;
             end
             
             T4: begin
-                R2out_tb <= 0; 
-                Yin_tb <= 0;
-                R6out_tb <= 1; 
-                ALU_control_tb <= 8'b00000111;  //div
+                R2out_tb <= 0; Yin_tb <= 0;
+                R6out_tb <= 1; ALU_control_tb <= 8'b00000111;  //div
                 Zin_tb <= 1;
             end
             
             T5: begin
-                R6out_tb <= 0; 
-                Zin_tb <= 0;
-                Zlowout_tb <= 1; 
-                LOin_tb <= 1;
+                R6out_tb <= 0; Zin_tb <= 0;
+                Zlowout_tb <= 1; LOin_tb <= 1;
             end
             
             T6: begin
                 
-					 Zlowout_tb <= 0; 
-                LOin_tb <= 0;
-					 Zhighout_tb <= 1;
-                HIin_tb <= 1;
+					 Zlowout_tb <= 0; LOin_tb <= 0;
+					 Zhighout_tb <= 1; HIin_tb <= 1;
             end
             default: ;
         endcase

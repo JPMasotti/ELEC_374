@@ -40,7 +40,8 @@ module ALU (
       8'b00001100: ALU_result = {32'b0, shl_result};
       8'b00001101: ALU_result = {32'b0, shr_result};
       8'b00001110: ALU_result = {32'b0, shra_result};
-      default:     ALU_result = 64'h0000000000000001;
+      8'b00001111: ALU_result = {32'b0, add_result}; 
+      default:     ALU_result = 64'h0000000000000000;
     endcase
   end
 

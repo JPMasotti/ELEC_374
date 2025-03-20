@@ -1,9 +1,9 @@
 module fourTo16encoder(
-input wire [3:0] FourbitInput;
-output reg [16:0] SixteenbitOutput;
+input wire [3:0] FourbitInput,
+output reg [16:0] SixteenbitOutput
 );
 	always@(*) begin
-		case(decoderInput)
+		case(FourbitInput)
 			4'b0000 : SixteenbitOutput <= 16'h0001;
 			4'b0001 : SixteenbitOutput <= 16'h0002;
 			4'b0010 : SixteenbitOutput <= 16'h0004;

@@ -1,19 +1,19 @@
 module MDR (
     output reg [31:0] Q,
     input  wire [31:0] BusMuxOut,
-    input  wire [31:0] MDatain,
-    input  wire clock, clear, MDRin, read
+    input  wire [31:0] Mdatain,
+    input  wire clock, clear, MDRin, MD_read
 );
   reg [31:0] MDMux;
+
   always @(*) begin
-    if (read)
-      MDMux = MDatain;
-    else
-      MDMux = BusMuxOut;
+    MDMux = MD_read ? Mdatain : BusMuxOut;
   end
-  always @(posedge clock)
+
+  always @(posedge clock) begin
     if (clear)
       Q <= 32'b0;
     else if (MDRin)
-      Q <= MDMux;
+      Q <= MDMux;  // ✅ Proper latching
+  end
 endmodule

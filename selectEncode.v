@@ -15,6 +15,6 @@ assign decoderInput = (instruction[26:23] & {4{Gra}}) | (instruction[22:19] & {4
 fourTo16encoder encode(decoderInput, decoderOutput);
 
 assign opcode = instruction[31:27];
-assign CSignExtended = {{13(instruction[18]}}, instruction[18:0]};
+assign CSignExtended = {{13{instruction[18]}}, instruction[18:0]};
 
 endmodule

@@ -19,4 +19,5 @@ module conFF (
 				default: CON_Out <= 1'b0;
 			endcase
 		end
+	end
 endmodule

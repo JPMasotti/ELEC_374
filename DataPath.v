@@ -1,27 +1,35 @@
 module DataPath(
     input wire clock,
-    input wire clear, read,
+    input wire clear, read, write, ram_read, ram_write,
     input wire R0out, R1out, R2out, R3out, R4out, R5out, R6out,
     input wire R7out, R8out, R9out, R10out, R11out, R12out, R13out, R14out, R15out,
     input wire R0in, R1in, R2in, R3in, R4in, R5in, R6in, R7in,
     input wire R8in, R9in, R10in, R11in, R12in, R13in, R14in, R15in,
     input wire HIin, HIout, LOin, LOout, MDRout, MARout, PCout,
     input wire PCin, IRin, IRout, Zin, RZout, Zhighout, Zlowout, Yin, MARin, MDRin, IncPC,
-	 input wire BAout,
+    input wire BAout, 
+    input wire Grb,   
+    input wire Cout,  
+    input wire Gra,   
+	 input wire MD_read,
     input wire [7:0] ALU_control,
     input wire [31:0] Mdatain,
     input wire [4:0] shift_count_in,
     output wire [31:0] PCincremented, PCreg,
-    output wire [31:0] BusMuxOut
+    output wire [31:0] BusMuxOut,
+    output wire [31:0] RAM_address,  
+    output wire [31:0] RAM_data_out  
 );
 
   // Internal
+  wire [31:0] RAM_data_in;
   wire [31:0] BusMuxInR0, BusMuxInR1, BusMuxInR2, BusMuxInR3;
   wire [31:0] BusMuxInR4, BusMuxInR5, BusMuxInR6, BusMuxInR7;
   wire [31:0] BusMuxInR8, BusMuxInR9, BusMuxInR10, BusMuxInR11;
   wire [31:0] BusMuxInR12, BusMuxInR13, BusMuxInR14, BusMuxInR15;
   wire [31:0] BusMuxInHI, BusMuxInLO, BusMuxInIR;
-  wire [31:0] HIreg, LOreg, IRreg, Yreg, MARreg, MDRreg;
+  wire [31:0] HIreg, LOreg, IRreg, Yreg, MDRreg;
+  wire [8:0] MARreg;
   wire [63:0] ALU_result;
   wire [63:0] Zreg;
   wire [31:0] BusLO = Zreg[31:0];
@@ -33,6 +41,29 @@ module DataPath(
     .ALU_control(ALU_control),
     .shift_amt(shift_count_in),
     .ALU_result(ALU_result)
+  );
+
+load_store_unit ls_unit (
+    .base_reg(Yreg), 
+    .immediate(BusMuxOut), 
+    .stored_value(BusMuxOut), 
+    .ld(LD),
+    .ldi(LDI),
+    .st(ST),
+    .sti(STI),
+    .effective_address(effective_address),
+    .value_to_store(value_to_store)
+);
+
+
+ ram ram_inst (
+    .clock(clock),
+	 .read(ram_read), 
+	 .reset(reset),
+    .write(ram_write),
+    .address(MARreg),
+    .data_in(MDRreg),
+    .data_out(RAM_data_in)
   );
 
   // Registers
@@ -65,7 +96,6 @@ module DataPath(
   register IR (clear, clock, IRin, BusMuxOut, IRreg);
   register RY (clear, clock, Yin, BusMuxOut, Yreg);
   register #(.DATA_WIDTH_IN(64), .DATA_WIDTH_OUT(64)) RZ (clear, clock, Zin, ALU_result, Zreg);
-  register MAR (clear, clock, MARin, BusMuxOut, MARreg);
 
   register PC (clear, clock, (PCin | IncPC), PCincremented, PCreg);
 
@@ -74,13 +104,17 @@ module DataPath(
   MDR mdr (
     .Q(MDRreg),
     .BusMuxOut(BusMuxOut),
-    .MDatain(Mdatain),
+    .Mdatain(Mdatain),
     .clock(clock),
     .clear(clear),
     .MDRin(MDRin),
-    .read(read)
+    .MD_read(MD_read)
   );
+  
+  MAR mar (clock, clear, MARin, BusMuxOut, MARreg);
 
+  
+  
   Bus bus (
     .BusMuxInR0(BusMuxInR0), .BusMuxInR1(BusMuxInR1), .BusMuxInR2(BusMuxInR2), .BusMuxInR3(BusMuxInR3),
     .BusMuxInR4(BusMuxInR4), .BusMuxInR5(BusMuxInR5), .BusMuxInR6(BusMuxInR6), .BusMuxInR7(BusMuxInR7),
@@ -95,5 +129,5 @@ module DataPath(
     .RZout(RZout), .Zlowout(Zlowout), .Zhighout(Zhighout), .HIout(HIout), .LOout(LOout),
     .IRout(IRout), .Yout(Yin), .MDRout(MDRout), .MARout(MARout)
   );
-  
+
 endmodule
