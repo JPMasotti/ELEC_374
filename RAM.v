@@ -12,7 +12,15 @@ module ram(
         for(i = 0; i < 512; i = i+1) begin
             memory[i] = 32'b0;
         end
-        memory[84] = 32'h00000097; 
+		  //case 1
+//        memory[84] = 32'h00000097; 
+//		  memory[0] = 32'b10000_010000000000000000001010100;
+//		  memory[1] = 32'b10000_010000000000000000001010100;  
+
+		  //case 2
+		  memory[0] = 32'h83100063;
+		  memory[1] = 32'h83100063;
+		  memory[219] = 32'h00000046;
     end
 
     // ✅ Fix: Only read/write when enabled

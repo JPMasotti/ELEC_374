@@ -1,6 +1,6 @@
 module fourTo16encoder(
 input wire [3:0] FourbitInput,
-output reg [16:0] SixteenbitOutput
+output reg [15:0] SixteenbitOutput
 );
 	always@(*) begin
 		case(FourbitInput)

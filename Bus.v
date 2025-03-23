@@ -3,42 +3,54 @@ module Bus (
     input wire [31:0] BusMuxInR4, BusMuxInR5, BusMuxInR6, BusMuxInR7,
     input wire [31:0] BusMuxInR8, BusMuxInR9, BusMuxInR10, BusMuxInR11,
     input wire [31:0] BusMuxInR12, BusMuxInR13, BusMuxInR14, BusMuxInR15,
-    input wire [31:0] HIreg, LOreg, BusMuxInPC, BusMuxInIR,
-    input wire [31:0] BusMuxInMAR, BusMuxInMDR, Yreg,
+    input wire [31:0] HIreg, LOreg, BusMuxInIR,
+    input wire [31:0] BusMuxInMAR, BusMuxInMDR, Yreg, CSignExtended,
+    input wire [31:0] PCreg,
     input wire [63:0] Zreg,
-    input wire R0out, R1out, R2out, R3out, R4out, R5out, R6out, R7out,
-    input wire R8out, R9out, R10out, R11out, R12out, R13out, R14out, R15out,
-    input wire RZout, Zlowout, Zhighout, HIout, LOout, IRout, Yout, MARout, MDRout,
+
+    input wire [15:0] RegOut,
+    input wire Rout,
+
+    input wire Zlowout, Zhighout, HIout, LOout, IRout, Yout, MARout, MDRout, Cout,
+    input wire PCout,
+
     output wire [31:0] BusMuxOut
 );
+
   reg [31:0] q;
+
   always @(*) begin
-    q = 32'bz;
-    case (1'b1)
-      R0out: q = BusMuxInR0;
-      R1out: q = BusMuxInR1;
-      R2out: q = BusMuxInR2;
-      R3out: q = BusMuxInR3;
-      R4out: q = BusMuxInR4;
-      R5out: q = BusMuxInR5;
-      R6out: q = BusMuxInR6;
-      R7out: q = BusMuxInR7;
-      R8out: q = BusMuxInR8;
-      R9out: q = BusMuxInR9;
-      R10out: q = BusMuxInR10;
-      R11out: q = BusMuxInR11;
-      R12out: q = BusMuxInR12;
-      R13out: q = BusMuxInR13;
-      R14out: q = BusMuxInR14;
-      R15out: q = BusMuxInR15;
-      RZout, Zlowout, Zhighout: q = Zreg;
-      HIout: q = HIreg;
-      LOout: q = LOreg;
-      IRout: q = BusMuxInIR;
-      Yout: q = Yreg;
-      MARout: q = BusMuxInMAR;
-      MDRout: q = BusMuxInMDR;
-    endcase
+
+    if (Rout) begin
+      //if (RegOut[0])      q = BusMuxInR0;
+      if (RegOut[1]) q = BusMuxInR1;
+      else if (RegOut[2]) q = BusMuxInR2;
+      else if (RegOut[3]) q = BusMuxInR3;
+      else if (RegOut[4]) q = BusMuxInR4;
+      else if (RegOut[5]) q = BusMuxInR5;
+      else if (RegOut[6]) q = BusMuxInR6;
+      else if (RegOut[7]) q = BusMuxInR7;
+      else if (RegOut[8]) q = BusMuxInR8;
+      else if (RegOut[9]) q = BusMuxInR9;
+      else if (RegOut[10]) q = BusMuxInR10;
+      else if (RegOut[11]) q = BusMuxInR11;
+      else if (RegOut[12]) q = BusMuxInR12;
+      else if (RegOut[13]) q = BusMuxInR13;
+      else if (RegOut[14]) q = BusMuxInR14;
+      else if (RegOut[15]) q = BusMuxInR15;
+    end
+    else if (MDRout)          q = BusMuxInMDR;
+    else if (Zlowout)         q = Zreg[31:0];
+    else if (Zhighout)        q = Zreg[63:32];
+    else if (HIout)           q = HIreg;
+    else if (LOout)           q = LOreg;
+    else if (IRout)           q = BusMuxInIR;
+    else if (Yout)            q = Yreg;
+    else if (PCout)           q = PCreg;
+    else if (Cout)            q = CSignExtended;
+    else if (MARout)          q = BusMuxInMAR;
   end
+
   assign BusMuxOut = q;
+
 endmodule

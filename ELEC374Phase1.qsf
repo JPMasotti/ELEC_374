@@ -52,7 +52,7 @@ set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
-set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH load_tb -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH load_case2_tb -section_id eda_simulation
 set_global_assignment -name EDA_TEST_BENCH_NAME ALU_tb -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id ALU_tb
 set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "500 ns" -section_id ALU_tb
@@ -154,8 +154,28 @@ set_global_assignment -name VERILOG_FILE conFF.v
 set_global_assignment -name VERILOG_FILE outport.v
 set_global_assignment -name VERILOG_FILE inport.v
 set_global_assignment -name VERILOG_FILE zero_register.v
-set_global_assignment -name VERILOG_FILE load_store_unit.v
 set_global_assignment -name VERILOG_FILE load_tb.v
+set_global_assignment -name EDA_TEST_BENCH_NAME load_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id load_tb
+set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "500 ns" -section_id load_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME load_tb -section_id load_tb
+set_global_assignment -name HEX_FILE hex_mem_init.hex
+set_global_assignment -name VERILOG_FILE mux21.v
+set_global_assignment -name VERILOG_FILE MAR.v
+set_global_assignment -name VERILOG_FILE bus_tb.v
+set_global_assignment -name EDA_TEST_BENCH_NAME bus_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id bus_tb
+set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "500 ns" -section_id bus_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME bus_tb -section_id bus_tb
+set_global_assignment -name VERILOG_FILE datapath_busmux_tb.v
+set_global_assignment -name EDA_TEST_BENCH_NAME datapath_busmux_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id datapath_busmux_tb
+set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "500 ns" -section_id datapath_busmux_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME datapath_busmux_tb -section_id datapath_busmux_tb
+set_global_assignment -name VERILOG_FILE ldi_tb.v
+set_global_assignment -name VERILOG_FILE load_r6_offset_tb.v
+set_global_assignment -name VERILOG_FILE load_case2_tb.v
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_global_assignment -name EDA_TEST_BENCH_FILE ALU_tb.v -section_id ALU_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE testbench.v -section_id testbench
 set_global_assignment -name EDA_TEST_BENCH_FILE addinstr_tb.v -section_id addinstr_tb
@@ -171,13 +191,11 @@ set_global_assignment -name EDA_TEST_BENCH_FILE neg32_tb.v -section_id neg32_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE not32_tb.v -section_id not32_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE shra32_tb.v -section_id shra32_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE shl32_tb.v -section_id shl32_tb
-set_global_assignment -name EDA_TEST_BENCH_NAME load_tb -section_id eda_simulation
-set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id load_tb
-set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "500 ns" -section_id load_tb
-set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME load_tb -section_id load_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE load_tb.v -section_id load_tb
-set_global_assignment -name HEX_FILE hex_mem_init.hex
-set_global_assignment -name VERILOG_FILE MAR.v
-set_global_assignment -name VERILOG_FILE "2-1mux.v"
-set_global_assignment -name VERILOG_FILE mux21.v
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name EDA_TEST_BENCH_FILE bus_tb.v -section_id bus_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE datapath_busmux_tb.v -section_id datapath_busmux_tb
+set_global_assignment -name EDA_TEST_BENCH_NAME load_case2_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id load_case2_tb
+set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "500 ns" -section_id load_case2_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME load_case2_tb -section_id load_case2_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE load_case2_tb.v -section_id load_case2_tb
