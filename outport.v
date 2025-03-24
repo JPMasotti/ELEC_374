@@ -8,7 +8,7 @@ module outport(
     if (clear)
       out <= 32'b0;
     else if (enable)
-      out <= bus;       // latch bus data into outport register
+      out <= bus;      
   end
 
 endmodule
