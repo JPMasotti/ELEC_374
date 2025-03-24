@@ -149,7 +149,6 @@ module mf_tb;
     endcase
   end
 
-  // End simulation after sufficient time.
   initial begin
     #300 $stop;
   end
