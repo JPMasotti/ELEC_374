@@ -1,4 +1,4 @@
-`timescale 1ns/10ps   // Time unit and precision
+`timescale 1ns/10ps   
  
 module conFF #(parameter DATA_WIDTH = 32)(
     input [DATA_WIDTH-1:0] IR,
@@ -19,7 +19,7 @@ initial CON = 0;
  
 always @ (IR, BusMuxOut) begin  
     Ra = IR[26:23];
-    C2 = IR[22:19]; // C2 is a 4-bit but last 2 bits are most important
+    C2 = IR[22:19]; 
     brzr = 0;
     brnz = 0;
     brpl = 0;
@@ -34,13 +34,11 @@ always @ (IR, BusMuxOut) begin
         4'b0011: brmi = 1;
     endcase
    
-    //Determine input signals
     sigDig = BusMuxOut[DATA_WIDTH-1];
     for (i = 0; i < DATA_WIDTH; i = i + 1) begin
         BusOR = BusOR | BusMuxOut[i];
     end
    
-    // CONN FF Logic
     D = (brzr & ~BusOR) | (brnz & BusOR) | (brpl & ~sigDig) | (brmi & sigDig);
 end
  
