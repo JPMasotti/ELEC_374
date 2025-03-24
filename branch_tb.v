@@ -96,10 +96,10 @@ module branch_tb;
     case (state)
       RegLoad1: begin
          // Format: [31:27]=opcode (10000), [26:23]=R4 (0100), [22:19]=R0 (0000), [18:0]=#54.
-         Mdatain = 32'b00100_000100000000000000000011011; //case 1
+         //Mdatain = 32'b00100_000100000000000000000011011; //case 1
 			//Mdatain = 32'b00100_000100010000000000000011011; //case 2
 			//Mdatain = 32'b00100_000100100000000000000011011; //case 3
-			//Mdatain = 32'b00100_000100110000000000000011011; //case 4
+			Mdatain = 32'b00100_000100110000000000000011011; //case 4
          MD_read = 1;
          MDRin   = 1;
          next_state = RegLoad2;
@@ -110,10 +110,10 @@ module branch_tb;
          next_state = RegLoad3;
       end
       RegLoad3: begin
-			Mdatain = 8'b00000000; //case 1
+			//Mdatain = 8'b00000000; //case 1
 			//Mdatain = 8'b00010100; //case 2
 			//Mdatain = 8'b00010100; //case 3
-			//Mdatain = 32'h10010100; //case 4
+			Mdatain = 32'hFFFFFFEC; //case 4
 			MD_read = 1;
 			MDRin = 1;
 			next_state = RegLoad4;
