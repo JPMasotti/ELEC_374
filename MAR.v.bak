@@ -1,0 +1,16 @@
+module MAR(
+    input wire clock,          // Clock signal
+    input wire clear,          // Asynchronous reset
+    input wire MARin,          // Enable signal to load data into MAR
+    input wire [31:0] BusMuxOut, // Data input from the bus
+    output reg [8:0] BusMuxInMAR    // Output the stored address
+);
+
+    always @(posedge clock or posedge clear) begin
+        if (clear)
+            MARout <= 32'b0; // Reset MAR when clear is high
+        else if (MARin)
+            MARout <= BusMuxOut; // Load the address into MAR
+    end
+
+endmodule

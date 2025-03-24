@@ -1,23 +1,55 @@
-module conFF (
-	input wire [1:0] IR_Bits,        // Instruction bits IR[20..19] to indicate branch condition
-	input wire [31:0] Bus_Data,      // Data from bus to be evaluated
-	input wire CON_In,               // Enable signal for evaluating condition
-	input wire clk,                  // Clock signal
-	input wire clear,                  // Asynchronous clear signal
-	output reg CON_Out               // Output indicating condition met or not
-);
+`timescale 1ns/10ps   // Time unit and precision
+ 
+module conFF #(parameter DATA_WIDTH = 32)(
+    input [DATA_WIDTH-1:0] IR,
+    input [DATA_WIDTH-1:0] BusMuxOut,
+    input CONin,
+    output reg CON
+    );
+ 
+reg [3:0] Ra;
+reg [3:0] C2;
+reg brzr, brnz, brpl, brmi;
+reg BusOR;
+reg sigDig;
+integer i;
+reg D;
+reg CONout = 0;
+initial CON = 0;
+ 
+always @ (IR, BusMuxOut) begin  
+    Ra = IR[26:23];
+    C2 = IR[22:19]; // C2 is a 4-bit but last 2 bits are most important
+    brzr = 0;
+    brnz = 0;
+    brpl = 0;
+    brmi = 0;
+    BusOR = 0;
+   
+    //Decode IR
+    case (C2)
+        4'b0000: brzr = 1;
+        4'b0001: brnz = 1;
+        4'b0010: brpl = 1;
+        4'b0011: brmi = 1;
+    endcase
+   
+    //Determine input signals
+    sigDig = BusMuxOut[DATA_WIDTH-1];
+    for (i = 0; i < DATA_WIDTH; i = i + 1) begin
+        BusOR = BusOR | BusMuxOut[i];
+    end
+   
+    // CONN FF Logic
+    D = (brzr & ~BusOR) | (brnz & BusOR) | (brpl & ~sigDig) | (brmi & sigDig);
+end
+ 
+always @ (posedge CONin) begin
+    #2 //System delay (bus prop delay)
+    CONout = D;
+    CON = CONout;
+end
 
-	always @(posedge clk or posedge clear) begin
-		if (clear)
-			CON_Out <= 1'b0;
-		else if (CON_In) begin
-			case (IR_Bits)
-				2'b00: CON_Out <= (Bus_Data == 32'b0);        // brzr: branch if zero
-				2'b01: CON_Out <= (Bus_Data != 32'b0);        // brnz: branch if nonzero
-				2'b10: CON_Out <= (Bus_Data[31] == 1'b0);     // brpl: branch if positive
-				2'b11: CON_Out <= (Bus_Data[31] == 1'b1);     // brmi: branch if negative
-				default: CON_Out <= 1'b0;
-			endcase
-		end
-	end
+ 
+
 endmodule

@@ -1,6 +1,6 @@
 `timescale 1ns/10ps
 
-module load_tb;
+module loadi_case3_tb;
 
   // Control signal declarations
   reg clock = 0, clear = 0;
@@ -109,7 +109,7 @@ module load_tb;
          // The binary literal is your instruction word.
          // Format: [31:27]=opcode (10000), [26:23]=R4 (0100), [22:19]=R0 (0000), [18:0]=#54.
          // Here, we use: 32'b10000_010000000000000000001010100.
-         Mdatain = 32'b10000_010000000000000000001010100;
+         Mdatain = 32'b10001_010000000000000000001010100;
          MD_read = 1;
          MDRin   = 1;
          next_state = RegLoad2;
@@ -138,13 +138,13 @@ module load_tb;
       end
       T2: begin
          // Place the sign-extended immediate (constant #54) on the bus.
-         Cout = 1;
+         //MDRout = 1; IRin = 1;
          next_state = T3;
       end
       
       // Execution phase:
       T3: begin
-			Zin = 1;
+			Grb = 1; BAout = 1; Yin = 1;
          // For load immediate, we want the immediate value to be used.
          // **Modification:** Do not load Y with the immediate.
          // Y remains 0 so that the ALU computes 0 + immediate = immediate.
@@ -153,35 +153,19 @@ module load_tb;
       T4: begin
          // Capture the computed effective value using Zin.
          // Since Y is 0, effective value = 0 + immediate = immediate (#54).
-			Zlowout = 1;
-         MARin = 1;
+			Cout = 1;
+         Zin = 1;
          // Optionally, you can assert Yout to drive 0 onto the bus if needed.
          next_state = T5;
       end
       T5: begin
          // Drive the effective address onto the bus and load it into MAR.
-         ram_read = 1; MD_read = 1;
-			
-         next_state = T6;
-      end
-      T6: begin
-         // Read memory at the effective address into MDR.
-         MDRin = 1;  ram_read = 1; MD_read = 1;
-         next_state = T7;
-      end
-      T7: begin
-         // Transfer the data from MDR to the destination register R4.
-         MDRout = 1;
-         // Use the Gra path for selecting R4 (assuming IR[26:23] specifies R4).
-         Gra = 1;
+         Zlowout = 1;          Gra = 1;
          Rin = 1;
-         $display("✅ Load complete | BusMuxOut: %h", BusMuxOut);
-         next_state = T7;  // Remain here.
+			
+         next_state = T5;
       end
-      
-      default: begin
-         next_state = RegLoad1;
-      end
+
     endcase
   end
 

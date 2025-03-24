@@ -1,6 +1,6 @@
 `timescale 1ns/10ps
 
-module load_tb;
+module jump_tb;
 
   // Control signal declarations
   reg clock = 0, clear = 0;
@@ -17,7 +17,7 @@ module load_tb;
   wire [15:0] RegIn, RegOut;
   wire [31:0] CSignExtended;
   wire [4:0] shift_count_in;
-  wire change_PC, HIin, HIout, LOin, LOout;
+  reg change_PC, HIin, HIout, LOin, LOout, CONin, CON;
   wire IRout, MARout, Zhighout, read, write;
 
   // FSM state declarations using two registers: state and next_state.
@@ -51,7 +51,8 @@ module load_tb;
     .HIin(HIin), .HIout(HIout), .LOin(LOin), .LOout(LOout),
     .IRout(IRout), .MARout(MARout), .Zhighout(Zhighout),
     .change_PC(change_PC), .read(read), .write(write),
-    .shift_count_in(shift_count_in), .CSignExtended(CSignExtended)
+    .shift_count_in(shift_count_in), .CSignExtended(CSignExtended),
+	 .CONin(CONin), .CON(CON)
   );
 
   // Clock generation: 20 ns period (10 ns high, 10 ns low)
@@ -62,8 +63,8 @@ module load_tb;
 
   // Reset: Assert clear initially.
   initial begin
-    clear = 1;
-    #20 clear = 0;
+	  clear = 1;
+	  #20 clear = 0;
   end
 
   // Sequential state update process using nonblocking assignment.
@@ -108,8 +109,10 @@ module load_tb;
       RegLoad1: begin
          // The binary literal is your instruction word.
          // Format: [31:27]=opcode (10000), [26:23]=R4 (0100), [22:19]=R0 (0000), [18:0]=#54.
-         // Here, we use: 32'b10000_010000000000000000001010100.
-         Mdatain = 32'b10000_010000000000000000001010100;
+         //Mdatain = 32'b00100_000100000000000000000011011; //case 1
+			//Mdatain = 32'b00100_000100010000000000000011011; //case 2
+			//Mdatain = 32'b00100_000100100000000000000011011; //case 3
+			Mdatain = 32'b00100_100000000000000000000011011; //case 4
          MD_read = 1;
          MDRin   = 1;
          next_state = RegLoad2;
@@ -118,9 +121,22 @@ module load_tb;
          // Transfer the fetched instruction from MDR to IR.
          MDRout = 1;
          IRin   = 1;
-         next_state = T0;
+         next_state = RegLoad3;
       end
-      
+      RegLoad3: begin
+			//Mdatain = 8'b00000000; //case 1
+			//Mdatain = 8'b00010100; //case 2
+			//Mdatain = 8'b00010100; //case 3
+			Mdatain = 8'b00010100; //case 4
+			MD_read = 1;
+			MDRin = 1;
+			next_state = RegLoad4;
+		end
+		RegLoad4: begin
+			MDRout = 1;
+			Rin = 1; Gra = 1;
+			next_state = T0;
+		end
       // Instruction fetch cycle:
       T0: begin
          PCout = 1;
@@ -138,49 +154,17 @@ module load_tb;
       end
       T2: begin
          // Place the sign-extended immediate (constant #54) on the bus.
-         Cout = 1;
+         //MDRout = 1; IRin = 1;
          next_state = T3;
       end
       
       // Execution phase:
       T3: begin
-			Zin = 1;
+			Gra = 1; Rout = 1; PCin = 1; change_PC = 1;
          // For load immediate, we want the immediate value to be used.
          // **Modification:** Do not load Y with the immediate.
          // Y remains 0 so that the ALU computes 0 + immediate = immediate.
-         next_state = T4;
-      end
-      T4: begin
-         // Capture the computed effective value using Zin.
-         // Since Y is 0, effective value = 0 + immediate = immediate (#54).
-			Zlowout = 1;
-         MARin = 1;
-         // Optionally, you can assert Yout to drive 0 onto the bus if needed.
-         next_state = T5;
-      end
-      T5: begin
-         // Drive the effective address onto the bus and load it into MAR.
-         ram_read = 1; MD_read = 1;
-			
-         next_state = T6;
-      end
-      T6: begin
-         // Read memory at the effective address into MDR.
-         MDRin = 1;  ram_read = 1; MD_read = 1;
-         next_state = T7;
-      end
-      T7: begin
-         // Transfer the data from MDR to the destination register R4.
-         MDRout = 1;
-         // Use the Gra path for selecting R4 (assuming IR[26:23] specifies R4).
-         Gra = 1;
-         Rin = 1;
-         $display("✅ Load complete | BusMuxOut: %h", BusMuxOut);
-         next_state = T7;  // Remain here.
-      end
-      
-      default: begin
-         next_state = RegLoad1;
+         next_state = T3;
       end
     endcase
   end

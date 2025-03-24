@@ -6,8 +6,10 @@ module DataPath(
     input wire PCin, IRin, IRout, Zin, Zhighout, Zlowout,
     input wire Yin, MARin, MDRin, IncPC,
     input wire Cout, MD_read, Gra, Grb, Grc, BAout, Rin, Rout,
+	 input wire INPORTin, OUTPORTin,
     input wire change_PC, Yout,
-    input wire [31:0] Mdatain,
+	 input wire CONin, CON, OUTenable,
+    input wire [31:0] Mdatain, INPORTdata,
     input wire [4:0] shift_count_in,
 
     output wire [3:0] decoderInput,
@@ -25,7 +27,9 @@ module DataPath(
   wire [31:0] BusMuxInR4, BusMuxInR5, BusMuxInR6, BusMuxInR7;
   wire [31:0] BusMuxInR8, BusMuxInR9, BusMuxInR10, BusMuxInR11;
   wire [31:0] BusMuxInR12, BusMuxInR13, BusMuxInR14, BusMuxInR15;
+  wire [31:0] BusMuxInINPORT, BusMuxInOUTPORT;
   wire [31:0] HIreg, LOreg, IRreg, Yreg, BusMuxInMDR;
+  wire [31:0] OUT, IN;
   wire [8:0]  BusMuxInMAR;
   wire [63:0] ALU_result, Zreg;
   wire [31:0] Mdatain_mux;
@@ -48,6 +52,13 @@ module DataPath(
     .decoderInput(decoderInput)
   );
 
+  
+  // === conFF ===
+  	conFF con(instruction,        // Instruction bits IR[20..19] to indicate branch condition
+BusMuxOut,      // Data from bus to be evaluated
+CONin,              
+CON              
+);
   // === ALU ===
   ALU alu(
     .A(Yreg),
@@ -87,14 +98,17 @@ module DataPath(
   register R15 (clear, clock, RegIn[15], BusMuxOut, BusMuxInR15);
 	
   // === Special Registers ===
-  register HI (clear, clock, HIin, BusHI, HIreg);
-  register LO (clear, clock, LOin, BusLO, LOreg);
+//  register RZHI (clear, clock, HIin, BusHI, HIreg);
+//  register RZLO (clear, clock, LOin, BusLO, LOreg);
+	register LO (clear, clock, LOin, BusMuxOut, LOreg);
+	register HI (clear, clock, HIin, BusMuxOut, HIreg);
   register IR (clear, clock, IRin, BusMuxOut, IRreg);
   register RY (clear, clock, Yin, BusMuxOut, Yreg);
   register #(.DATA_WIDTH_IN(64), .DATA_WIDTH_OUT(64)) RZ (
     .clear(clear), .clock(clock), .enable(Zin), .BusMuxOut(ALU_result), .BusMuxIn(Zreg)
   );
-
+	register inport(clear, clock, INPORTin, BusMuxOut, BusMuxInINPORT);
+	register outport(clear, clock, OUTPORTin, BusMuxOut,  BusMuxInOUTPORT);
   // === PC Register ===
   wire [31:0] PC_input = IncPC ? (PCreg + 1) : (change_PC ? BusMuxOut : PCreg);
   register PC (clear, clock, PCin, PC_input, PCreg);
