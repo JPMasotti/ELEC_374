@@ -14,6 +14,6 @@ module MDR (
     if (clear)
       Q <= 32'b0;
     else if (MDRin)
-      Q <= MDMux;  // ✅ Proper latching
+      Q <= MDMux; 
   end
 endmodule

@@ -21,7 +21,7 @@ module DataPath(
     output wire [15:0] RegOut
 );
 
-  // === Internal Connections ===
+  // Internal Connections 
   wire [31:0] memory_data_out;
   wire [31:0] BusMuxInR0, BusMuxInR1, BusMuxInR2, BusMuxInR3;
   wire [31:0] BusMuxInR4, BusMuxInR5, BusMuxInR6, BusMuxInR7;
@@ -39,7 +39,7 @@ module DataPath(
   assign instruction = IRreg;
   assign Mdatain_mux = ram_read ? memory_data_out : Mdatain;
 
-  // === Select and Encode Logic ===
+  // Select and Encode Logic
   wire [4:0] opcode;
   selectEncode encodeselect(
     .instruction(IRreg),
@@ -53,13 +53,13 @@ module DataPath(
   );
 
   
-  // === conFF ===
-  	conFF con(instruction,        // Instruction bits IR[20..19] to indicate branch condition
-BusMuxOut,      // Data from bus to be evaluated
+  // conFF 
+  	conFF con(instruction,        
+BusMuxOut,      
 CONin,              
 CON              
 );
-  // === ALU ===
+  // ALU
   ALU alu(
     .A(Yreg),
     .B(BusMuxOut),
@@ -68,18 +68,18 @@ CON
     .ALU_result(ALU_result)
   );
 
-  // === Memory ===
+  // Memory
   ram ram_inst(
     .clock(clock),
     .reset(clear),
     .read(ram_read),
     .write(ram_write),
     .address(BusMuxInMAR),
-    .data_in(BusMuxOut),         // MDR register gets its input from the bus
+    .data_in(BusMuxOut),        
     .data_out(memory_data_out)
   );
 
-  // === Registers R0–R15 ===
+  // Registers R0–R15 
   zero_register R0 (.D(BusMuxOut), .clk(clock), .clr(clear), .R0in(RegIn[0]), .BAout(BAout), .BusMuxIn_R0(BusMuxInR0));
   register R1  (clear, clock, RegIn[1],  BusMuxOut, BusMuxInR1);
   register R2  (clear, clock, RegIn[2],  BusMuxOut, BusMuxInR2);
@@ -97,7 +97,7 @@ CON
   register R14 (clear, clock, RegIn[14], BusMuxOut, BusMuxInR14);
   register R15 (clear, clock, RegIn[15], BusMuxOut, BusMuxInR15);
 	
-  // === Special Registers ===
+
 //  register RZHI (clear, clock, HIin, BusHI, HIreg);
 //  register RZLO (clear, clock, LOin, BusLO, LOreg);
 	register LO (clear, clock, LOin, BusMuxOut, LOreg);
@@ -109,11 +109,11 @@ CON
   );
 	register inport(clear, clock, INPORTin, BusMuxOut, BusMuxInINPORT);
 	register outport(clear, clock, OUTPORTin, BusMuxOut,  BusMuxInOUTPORT);
-  // === PC Register ===
+
   wire [31:0] PC_input = IncPC ? (PCreg + 1) : (change_PC ? BusMuxOut : PCreg);
   register PC (clear, clock, PCin, PC_input, PCreg);
 
-  // === MDR and MAR ===
+  // MDR and MAR
   MDR mdr (
     .Q(BusMuxInMDR),
     .BusMuxOut(BusMuxOut),
@@ -125,7 +125,7 @@ CON
   );
   MAR mar (clock, clear, MARin, BusMuxOut, BusMuxInMAR);
 
-  // === Bus ===
+  // Bus
   Bus bus (
     .BusMuxInR0(BusMuxInR0), .BusMuxInR1(BusMuxInR1), .BusMuxInR2(BusMuxInR2), .BusMuxInR3(BusMuxInR3),
     .BusMuxInR4(BusMuxInR4), .BusMuxInR5(BusMuxInR5), .BusMuxInR6(BusMuxInR6), .BusMuxInR7(BusMuxInR7),

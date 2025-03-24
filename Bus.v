@@ -22,8 +22,8 @@ module Bus (
   always @(*) begin
 
     if (Rout) begin
-      //if (RegOut[0])      q = BusMuxInR0;
-      if (RegOut[1]) q = BusMuxInR1;
+      if (RegOut[0])      q = BusMuxInR0;
+      else if (RegOut[1]) q = BusMuxInR1;
       else if (RegOut[2]) q = BusMuxInR2;
       else if (RegOut[3]) q = BusMuxInR3;
       else if (RegOut[4]) q = BusMuxInR4;
