@@ -22,22 +22,21 @@ module loadi_case4_tb;
 
   // FSM state declarations using two registers: state and next_state.
   reg [4:0] state, next_state;
-  // Use your original state names:
-  parameter RegLoad1 = 0,   // Preload: load instruction word "ld R4, #54"
-            RegLoad2 = 1,   // Transfer MDR -> IR
-            RegLoad3 = 2,   // (Unused in this example, but kept for consistency)
-            RegLoad4 = 3,   // (Unused)
-            RegLoad5 = 4,   // (Unused)
-            T0       = 5,   // Instruction fetch: PCout, MARin, IncPC, PCin, Zin
-            T1       = 6,   // Instruction fetch: Zlowout, ram_read, MDRin
-            T2       = 7,   // Instruction fetch: Cout (placing the immediate on the bus)
-            T3       = 8,   // Execution: (for load immediate, do NOT load Y with the immediate)
-            T4       = 9,   // Execution: capture computed effective value (Zin)
-            T5       = 10,  // Execution: drive effective address onto the bus and load MAR
-            T6       = 11,  // Execution: ram_read and MDRin (read memory at EA into MDR)
-            T7       = 12;  // Execution: MDRout to destination register R4 (via Gra & Rin
-  // Instantiate your DataPath (signal names must match your design)
-  DataPath uut (
+  parameter RegLoad1 = 0,   
+            RegLoad2 = 1,   
+            RegLoad3 = 2,   
+            RegLoad4 = 3,   
+            RegLoad5 = 4,   
+            T0       = 5,   
+            T1       = 6,   
+            T2       = 7,   
+            T3       = 8,   
+            T4       = 9,   
+            T5       = 10,  
+            T6       = 11,  
+            T7       = 12;  
+
+  DataPath Dut (
     .clock(clock), .clear(clear),
     .ram_read(ram_read), .ram_write(ram_write),
     .PCout(PCout), .MARin(MARin), .IncPC(IncPC), .Zin(Zin), .PCin(PCin),
@@ -53,19 +52,16 @@ module loadi_case4_tb;
     .shift_count_in(shift_count_in), .CSignExtended(CSignExtended)
   );
 
-  // Clock generation: 20 ns period (10 ns high, 10 ns low)
   initial begin
     clock = 0;
     forever #10 clock = ~clock;
   end
 
-  // Reset: Assert clear initially.
   initial begin
     clear = 1;
     #20 clear = 0;
   end
 
-  // Sequential state update process using nonblocking assignment.
   always @(posedge clock) begin
     if (clear)
       state <= RegLoad1;
@@ -73,9 +69,7 @@ module loadi_case4_tb;
       state <= next_state;
   end
 
-  // Combinational process: drive control signals and compute next_state based on current state.
   always @(*) begin
-    // Default all control signals to 0.
     ram_read         = 0;
     ram_write        = 0;
     MD_read          = 0;
@@ -99,11 +93,10 @@ module loadi_case4_tb;
     Yout             = 0;
     Mdatain          = 32'h0;
     
-    // Default next_state = current state.
     next_state = state;
     
     case (state)
-      // Preload phase: load the instruction word for "ld R4, #54"
+      // load the instruction word for "ld R4, #54"
       RegLoad1: begin
          Mdatain = 32'h8b100063;
          MD_read = 1;
@@ -111,7 +104,6 @@ module loadi_case4_tb;
          next_state = RegLoad2;
       end
       RegLoad2: begin
-         // Transfer the fetched instruction from MDR to IR.
          MDRout = 1;
          IRin   = 1;
          next_state = RegLoad3;
@@ -124,13 +116,11 @@ module loadi_case4_tb;
       end
       RegLoad4: begin
         MDRout = 1;
-        // Transfer MDR to R2 (assume selection via Grb and Rin)
         Grb = 1;
         Rin = 1;
         next_state = T0;
       end
       
-      // Instruction fetch cycle:
       T0: begin
          PCout = 1;
          MARin = 1;
@@ -146,13 +136,12 @@ module loadi_case4_tb;
          next_state = T2;
       end
       T2: begin
-						Grb = 1;   // Select R2
-        Rout = 1;  // Drive R2 onto bus
-        Yin  = 1;  // Latch into Y
+						Grb = 1;   
+        Rout = 1;  
+        Yin  = 1;  
          next_state = T3;
       end
       
-      // Execution phase:
       T3: begin
 			Rout = 1; Grb= 1; Yin = 1;
          next_state = T4;
@@ -160,14 +149,11 @@ module loadi_case4_tb;
       T4: begin
 			Cout = 1;
          Zin = 1;
-         // Optionally, you can assert Yout to drive 0 onto the bus if needed.
          next_state = T5;
       end
       T5: begin
 			Zlowout = 1;
-         // Drive the effective address onto the bus and load it into MAR.
          		
-         // Use the Gra path for selecting R4 (assuming IR[26:23] specifies R4).
          Gra = 1;
          Rin = 1;
 			
@@ -179,7 +165,6 @@ module loadi_case4_tb;
     endcase
   end
 
-  // End simulation after sufficient time.
   initial begin
     #300 $stop;
   end

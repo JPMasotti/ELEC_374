@@ -2,7 +2,6 @@
 
 module load_case2_tb;
 
-  // Control signal declarations
   reg clock = 0, clear = 0;
   reg ram_read = 0, ram_write = 0, MD_read = 0;
   reg PCout = 0, MARin = 0, IncPC = 0, Zin = 0, PCin = 0;
@@ -11,7 +10,6 @@ module load_case2_tb;
   reg Rin = 0, Rout = 0;
   reg [31:0] Mdatain = 0;
 
-  // Wires from the datapath
   wire [31:0] PCreg, BusMuxOut, instruction;
   wire [3:0] decoderInput;
   wire [15:0] RegIn, RegOut;
@@ -20,9 +18,7 @@ module load_case2_tb;
   wire change_PC, HIin, HIout, LOin, LOout;
   wire IRout, MARout, Zhighout, read, write;
 
-  // FSM state declarations using two registers: state and next_state.
   reg [4:0] state, next_state;
-  // Use your original state names:
   parameter RegLoad1 = 0,   // Preload: load instruction word "ld R4, #54"
             RegLoad2 = 1,   // Transfer MDR -> IR
             RegLoad3 = 2,   // (Unused in this example, but kept for consistency)
@@ -36,8 +32,8 @@ module load_case2_tb;
             T5       = 10,  // Execution: drive effective address onto the bus and load MAR
             T6       = 11,  // Execution: ram_read and MDRin (read memory at EA into MDR)
             T7       = 12;  // Execution: MDRout to destination register R4 (via Gra & Rin
-  // Instantiate your DataPath (signal names must match your design)
-  DataPath uut (
+
+  DataPath Dut (
     .clock(clock), .clear(clear),
     .ram_read(ram_read), .ram_write(ram_write),
     .PCout(PCout), .MARin(MARin), .IncPC(IncPC), .Zin(Zin), .PCin(PCin),
@@ -53,19 +49,17 @@ module load_case2_tb;
     .shift_count_in(shift_count_in), .CSignExtended(CSignExtended)
   );
 
-  // Clock generation: 20 ns period (10 ns high, 10 ns low)
   initial begin
     clock = 0;
     forever #10 clock = ~clock;
   end
 
-  // Reset: Assert clear initially.
+
   initial begin
     clear = 1;
     #20 clear = 0;
   end
 
-  // Sequential state update process using nonblocking assignment.
   always @(posedge clock) begin
     if (clear)
       state <= RegLoad1;
@@ -73,7 +67,6 @@ module load_case2_tb;
       state <= next_state;
   end
 
-  // Combinational process: drive control signals and compute next_state based on current state.
   always @(*) begin
     // Default all control signals to 0.
     ram_read         = 0;
@@ -99,7 +92,6 @@ module load_case2_tb;
     Yout             = 0;
     Mdatain          = 32'h0;
     
-    // Default next_state = current state.
     next_state = state;
     
     case (state)
@@ -111,7 +103,6 @@ module load_case2_tb;
          next_state = RegLoad2;
       end
       RegLoad2: begin
-         // Transfer the fetched instruction from MDR to IR.
          MDRout = 1;
          IRin   = 1;
          next_state = RegLoad3;
@@ -124,7 +115,6 @@ module load_case2_tb;
       end
       RegLoad4: begin
         MDRout = 1;
-        // Transfer MDR to R2 (assume selection via Grb and Rin)
         Grb = 1;
         Rin = 1;
         next_state = T0;
@@ -146,13 +136,12 @@ module load_case2_tb;
          next_state = T2;
       end
       T2: begin
-						Grb = 1;   // Select R2
-        Rout = 1;  // Drive R2 onto bus
-        Yin  = 1;  // Latch into Y
+						Grb = 1;   
+        Rout = 1;  
+        Yin  = 1;  
          next_state = T3;
       end
       
-      // Execution phase:
       T3: begin
 			Cout = 1; Zin = 1;
          next_state = T4;
@@ -160,28 +149,24 @@ module load_case2_tb;
       T4: begin
 			Zlowout = 1;
          MARin = 1;
-         // Optionally, you can assert Yout to drive 0 onto the bus if needed.
          next_state = T5;
       end
       T5: begin
 			ram_read = 1; MD_read = 1;
-         // Drive the effective address onto the bus and load it into MAR.
+         // Effective address onto the bus and load it into MAR.
          
 			
          next_state = T6;
       end
       T6: begin
 			MDRin = 1;  ram_read = 1; MD_read = 1;
-         // Read memory at the effective address into MDR.
          
          next_state = T7;
       end
       T7: begin
 			MDRout = 1;
-         // Use the Gra path for selecting R4 (assuming IR[26:23] specifies R4).
          Gra = 1;
          Rin = 1;
-         // Transfer the data from MDR to the destination register R4.
          
          $display("✅ Load complete | BusMuxOut: %h", BusMuxOut);
          next_state = T7;  // Remain here.
@@ -192,7 +177,6 @@ module load_case2_tb;
     endcase
   end
 
-  // End simulation after sufficient time.
   initial begin
     #300 $stop;
   end
