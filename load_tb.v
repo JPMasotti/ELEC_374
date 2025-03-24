@@ -20,19 +20,19 @@ module load_tb;
 
 
   reg [4:0] state, next_state;
-  parameter RegLoad1 = 0,   // Preload: load instruction word "ld R4, #54"
-            RegLoad2 = 1,   // Transfer MDR -> IR
-            RegLoad3 = 2,   // (Unused in this example, but kept for consistency)
-            RegLoad4 = 3,   // (Unused)
-            RegLoad5 = 4,   // (Unused)
-            T0       = 5,   // Instruction fetch: PCout, MARin, IncPC, PCin, Zin
-            T1       = 6,   // Instruction fetch: Zlowout, ram_read, MDRin
-            T2       = 7,   // Instruction fetch: Cout (placing the immediate on the bus)
-            T3       = 8,   // Execution: (for load immediate, do NOT load Y with the immediate)
-            T4       = 9,   // Execution: capture computed effective value (Zin)
-            T5       = 10,  // Execution: drive effective address onto the bus and load MAR
-            T6       = 11,  // Execution: ram_read and MDRin (read memory at EA into MDR)
-            T7       = 12;  // Execution: MDRout to destination register R4 (via Gra & Rin)
+  parameter RegLoad1 = 0,   
+            RegLoad2 = 1,   
+            RegLoad3 = 2,   
+            RegLoad4 = 3,   
+            RegLoad5 = 4,   
+            T0       = 5,   
+            T1       = 6,   
+            T2       = 7,   
+            T3       = 8,   
+            T4       = 9,   
+            T5       = 10,  
+            T6       = 11,  
+            T7       = 12;  
 
   DataPath Dut (
     .clock(clock), .clear(clear),
